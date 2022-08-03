@@ -27,11 +27,11 @@ function ContactLayout() {
                     fontWeight={600}
                     fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                     <Text as={'span'}>
-                        Aug 2
+                        What is
                     </Text>
                     <br />
                     <Text as={'span'} color={'red.400'}>
-                        kita
+                        "Name of the Website"
                     </Text>
                 </Heading>
                 <Text color={'gray.500'}>
