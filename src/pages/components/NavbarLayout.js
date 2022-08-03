@@ -16,26 +16,6 @@ import { HamburgerIcon, SmallCloseIcon, MoonIcon, SunIcon } from '@chakra-ui/ico
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav} from "react-bootstrap";
 
-// const styles = {
-//   className:'text-gray-600 block px-2 py-1 hover:underline hover:text-gray-900',
-//   activeClassName: 'underline text-gray-900'
-// }
-
-// const links = [
-//   {
-//     className: styles.className,
-//     activeClassName: styles.activeClassName,
-//     to: '/about',
-//     name: 'About'
-//   },
-//   {
-//     className: styles.className,
-//     activeClassName: styles.activeClassName,
-//     to: '/contact',
-//     name: 'Contact'
-//   },    
-// ]  
-// const links = ['About', 'Contact'];
 
 const NavLink = ({ children }) => (
   <Link
@@ -127,33 +107,3 @@ export default function NavbarLayout() {
     </>
   );
 }
-
-// import { LinkContainer } from "react-router-bootstrap";
-// import { Navbar, Nav} from "react-bootstrap";
-
-// function NavbarLayout() {
-//   return (
-//     <div className="App container py-3">
-//       <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
-//         <LinkContainer to="/">
-//           <Navbar.Brand className="font-weight-bold text-muted">
-//             Scratch
-//           </Navbar.Brand>
-//         </LinkContainer>
-//         <Navbar.Toggle />
-//         <Navbar.Collapse className="justify-content-end">
-//           <Nav activeKey={window.location.pathname}>
-//             <LinkContainer to="/about">
-//               <Nav.Link>About</Nav.Link>
-//             </LinkContainer>
-//             <LinkContainer to="/contact">
-//               <Nav.Link>Contact</Nav.Link>
-//             </LinkContainer>
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Navbar>
-//     </div>
-//   );
-// }
-
-// export default NavbarLayout
