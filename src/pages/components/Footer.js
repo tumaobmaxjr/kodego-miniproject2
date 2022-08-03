@@ -5,12 +5,6 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 function Footer() {
   return (
     <Container maxW='100%' px='10' as="footer" role="contentinfo">
-      <Stack
-        direction={{ base: 'column', md: 'row' }}
-        justify="space-between"
-        py={{ base: '5', md: '8' }}
-      >
-      </Stack>
       <Divider />
       <Stack
         py='5'
