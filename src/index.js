@@ -2,7 +2,7 @@ import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NavbarLayout from "./pages/NavbarLayout";
+import NavbarLayout from "./pages/components/NavbarLayoutavbarLayout";
 import Footer from "./pages/components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
