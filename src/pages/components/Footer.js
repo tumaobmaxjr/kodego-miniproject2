@@ -4,10 +4,10 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 function Footer() {
   return (
-    <Container maxW='100%' px='10' as="footer" role="contentinfo">
+    <Container maxW='100%' px='10' py='1' as="footer" role="contentinfo">
       <Divider />
       <Stack
-        py='5'
+        py='2'
         justify="space-between"
         direction={{ base: 'column-reverse', md: 'row' }}
         align="center"
@@ -22,8 +22,7 @@ function Footer() {
         </ButtonGroup>
       </Stack>
     </Container>
-   )
+  )
 }
 
 export default Footer
-//Sample Hello

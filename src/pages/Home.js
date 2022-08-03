@@ -3,7 +3,7 @@ const Home = () => {
         <>
             This is my Home Page
         </>
-    )
-  };
+    );
+}
   
-  export default Home;
+export default Home;

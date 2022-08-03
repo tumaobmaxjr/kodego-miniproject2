@@ -1,12 +1,15 @@
-// import ContactLayout form './components/ContactLayout';
 import ContactLayout from './components/ContactLayout';
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
     return (
-        <>
+        <div>
+            <Helmet>
+                <title>Contact</title>
+            </Helmet>
             <ContactLayout />
-        </>
-    )
-  };
+        </div>
+    );
+}
   
 export default Contact;
