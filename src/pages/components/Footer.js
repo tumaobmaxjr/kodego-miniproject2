@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 function Footer() {
   return (
-    <Container maxW='100%' px='10' py='1' as="footer" role="contentinfo">
+    <Container position="sticky" top="100%" maxW='100%' px='10' py='1' as="footer" role="contentinfo">
       <Divider />
       <Stack
         py='2'
