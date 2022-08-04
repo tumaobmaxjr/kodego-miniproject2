@@ -1,5 +1,6 @@
 import PeriodicTable from "./periodictable/PeriodicTable";
 import PeriodicData from "./periodictable/PeriodicData";
+import ElementInfo from "./periodictable/ElementInfo"
 import { Grid, GridItem } from '@chakra-ui/react'
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
                     <PeriodicData />
                 </GridItem>
             </Grid>
+            <ElementInfo/>
         </>
     );
 }
