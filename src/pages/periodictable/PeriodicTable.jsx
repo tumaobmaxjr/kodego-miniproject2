@@ -16,7 +16,7 @@ const PeriodicTable = () => {
   return (
     <div className="periodic-table">
       {data.elements.map((element) => (
-        <div
+        <button
           className="element"
           key={element.name}
           style={{
@@ -28,7 +28,7 @@ const PeriodicTable = () => {
           <strong>{element.symbol}</strong>
           <small className="number">{element.number}</small>
           <small className="name">{element.name}</small>
-        </div>
+        </button>
       ))}
     </div>
   );
