@@ -1,7 +1,8 @@
 import PeriodicTable from "./periodictable/PeriodicTable";
 import PeriodicData from "./periodictable/PeriodicData";
-import ElementInfo from "./periodictable/ElementInfo"
-import { Grid, GridItem } from '@chakra-ui/react'
+import PageTwo from "./periodictable/PageTwo";
+
+import { Grid, GridItem, Box } from '@chakra-ui/react'
 
 const Home = () => {
     return (
@@ -18,7 +19,8 @@ const Home = () => {
                     <PeriodicData />
                 </GridItem>
             </Grid>
-            <ElementInfo/>
+            <Box id="page-two-header" my={'2rem'} fontSize={'1.5em'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Box>
+            <PageTwo />
         </>
     );
 }

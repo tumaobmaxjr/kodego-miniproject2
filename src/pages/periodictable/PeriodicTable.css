@@ -1,3 +1,4 @@
+/*Home page - Periodic Table Style */
 .periodic-table {
     display: grid;
     grid-template-columns: repeat(18, 3.2rem);
@@ -40,3 +41,8 @@
   .periodic-table{
     width: 100%;
   }
+
+#element-video{
+  top: 2rem;
+  position: sticky;
+}
