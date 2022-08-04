@@ -5,12 +5,7 @@ import {
     Box,
     Heading,
     Text,
-    Button,
     Image,
-    Icon,
-    IconButton,
-    createIcon,
-    useColorModeValue,
 } from '@chakra-ui/react';
 
 const About = () => {
