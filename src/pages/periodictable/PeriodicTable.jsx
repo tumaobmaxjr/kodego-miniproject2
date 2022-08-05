@@ -15,19 +15,19 @@ const colorMap = {
 
 const PeriodicTable = () => {
 
-  const [elementName, setElementName] = useState(null)
+  // const [elementName, setElementName] = useState(null)
 
-  const getElementName = (name) => {
-    setElementName(name);
-    console.log(name)
-  }
+  // const getElementName = (name) => {
+  //   setElementName(name);
+  //   console.log(name)
+  // }
 
   return (
     <div className="periodic-table">
       {data.elements.map((element) => (
         <button
           //i dont know why it is looping
-          onClick={getElementName(element.number)}
+          // onClick={getElementName(element.number)}
 
           className="element"
           key={element.name}
@@ -38,7 +38,7 @@ const PeriodicTable = () => {
             borderColor: colorMap[element.category]
           }}
         >
-          <p>{elementName}</p>
+          {/* <p>{elementName}</p> */}
           <strong>{element.symbol}</strong>
           <small className="number">{element.number}</small>
           <small className="name">{element.name}</small>
