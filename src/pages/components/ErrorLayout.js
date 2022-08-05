@@ -28,7 +28,6 @@ function ErrorLayout() {
             align={'center'}
             spacing={{ base: 8, md: 10 }}
             pt='10'
-            pb='225'
             direction={{ base: 'column', md: 'row' }}>
             <Stack flex={1} align='center'>
                 <Heading
@@ -40,7 +39,7 @@ function ErrorLayout() {
                     </Text>
                 </Heading>
                 <Text>Page Not Found</Text>
-                <Text color={'gray.500'} pb='100'>
+                <Text color={'gray.500'} pb='10'>
                     This page you're looking for does not seem to exist
                 </Text>
                 <Button
