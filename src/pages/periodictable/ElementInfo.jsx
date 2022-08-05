@@ -20,7 +20,6 @@ const ElementInfo = () => {
                 "https://periodic-table-elements-info.herokuapp.com/elements"
             );
             const data = await response.json();
-            console.log(data);
 
             //update data
             setSymbol(data);
@@ -33,8 +32,6 @@ const ElementInfo = () => {
     useEffect(() => {
         fetchElements();
     }, []);
-
-    console.log(symbol);
 
     return (
         <>

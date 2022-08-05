@@ -1,3 +1,4 @@
+import { useState } from "react";
 import data from "./PeriodicTableJSON.json";
 import "./PeriodicTable.css";
 
@@ -13,6 +14,7 @@ const colorMap = {
 };
 
 const PeriodicTable = () => {
+
   return (
     <div className="periodic-table">
       {data.elements.map((element) => (
