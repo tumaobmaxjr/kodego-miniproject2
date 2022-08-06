@@ -1,5 +1,6 @@
 import data from './PeriodicTableJSON.json'
 import React, { useState } from 'react';
+import "./PeriodicTable.css";
 
 import {
     Box, Heading,
@@ -10,6 +11,17 @@ import {
     ListItem, ListIcon, OrderedList, UnorderedList,
     Input
 } from "@chakra-ui/react"
+
+const colorMap = {
+    "noble gas": "#FFBC42",
+    "alkaline earth metal": "#EC674E",
+    "diatomic nonmetal": "#D81159",
+    "alkali metal": "#8F2D56",
+    "transition metal": "#58586B",
+    "post-transition metal": "#218380",
+    lanthanide: "#4AABAF",
+    metalloid: "#73D2DE",
+};
 
 function PeriodicData() {
 
@@ -25,9 +37,13 @@ function PeriodicData() {
         discovered_by: 'Henry Cavendish',
         number: 1,
         phase: "Gas",
+
+        xpos: 1,
+        ypos: 1,
+        category: "diatomic nonmetal",
     });
 
-    const changeName = (name, summ, img, sym, discby, num, ph,) => {
+    const changeName = (name, summ, img, sym, discby, num, ph, x, y, cat) => {
         setElementName(previousState => {
             return {
                 name: name,
@@ -39,6 +55,10 @@ function PeriodicData() {
                 discovered_by: discby,
                 number: num,
                 phase: ph,
+
+                xpos: x,
+                ypos: y,
+                category: cat,
             }
         });
     }
@@ -46,60 +66,111 @@ function PeriodicData() {
     return (
 
         <>
-            <Box m={"0.5rem"}>
-                <Input
-                    color='teal'
-                    placeholder='Search Element'
-                    _placeholder={{ color: 'inherit' }}
-                    size='md'
-                    boxShadow='md'
+            <Grid
+                templateAreas={`"periodic-table periodic-info"`}
+                gridTemplateColumns={'3fr 1fr'}
+                mx={'3rem'}
+                mt={'1.5rem'}
+            >
+                <GridItem area={'periodic-table'} mx={'auto'} mt={'3.5rem'}>
+                    <div className="periodic-table">
+                        {data.elements.map((element, key) => (
+                            <button
+                            onClick={() => changeName
+                                    (element.name,
+                                        element.summary,
+                                        element.spectral_img,
+                                        element.symbol,
+                                        element.discovered_by,
+                                        element.number,
+                                        element.phase,
+                                        element.xpos,
+                                        element.ypos,
+                                        element.category,
+                                    )}
+                                className="element"
+                                key={key}
 
-                    onChange={event => { setSearchName(event.target.value) }}
-                />
-                {data.elements.filter((val => {
-                    //if search name is empty it will retrun nothing
-                    if (searchName == "") {
-                        return ('')
-                    } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                        return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase)
-                    }
-                })).map((symbolName, key) => {
-                    return (
-                        <Button onClick={() => changeName
-                            (symbolName.name,
-                                symbolName.summary,
-                                symbolName.spectral_img,
-                                symbolName.symbol,
-                                symbolName.discovered_by,
-                                symbolName.number,
-                                symbolName.phase,
-                            )} my={'0.5rem'} textAlign='center'>
-                            <Box key={key.number}>{symbolName.name}</Box>
-                        </Button>
-                    )
-                }
-                )}
-            </Box>
+                                style={{
+                                    gridRow: element.ypos,
+                                    gridColumn: element.xpos,
+                                    borderColor: colorMap[element.category],
+                                    backgroundColor: colorMap[element.category]
+                                }}
+                            >
+                                {/* <p>{elementName}</p> */}
+                                <strong>{element.symbol}</strong>
+                                <small className="number">{element.number}</small>
+                                <small className="name">{element.name}</small>
+                            </button>
+                        ))}
+                    </div>
+                </GridItem>
+                
+                <GridItem area={'periodic-info'}>
+                    <Box m={"0.5rem"}>
+                        <Input
+                            color='teal'
+                            placeholder='Search Element'
+                            _placeholder={{ color: 'inherit' }}
+                            size='md'
+                            boxShadow='md'
 
-            <Box minW={'20rem'} boxShadow='2xl' p={'1rem'}>
+                            onChange={event => { setSearchName(event.target.value) }}
+                        />
+                        {data.elements.filter((val => {
+                            //if search name is empty it will retrun nothing
+                            if (searchName == "") {
+                                return ('')
+                            } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category)
+                            }
+                        })).map((symbolName, key) => {
+                            return (
+                                <Button onClick={() => changeName
+                                    (symbolName.name,
+                                        symbolName.summary,
+                                        symbolName.spectral_img,
+                                        symbolName.symbol,
+                                        symbolName.discovered_by,
+                                        symbolName.number,
+                                        symbolName.phase,
+                                        symbolName.xpos,
+                                        symbolName.ypos,
+                                        symbolName.category,
+                                    )} my={'0.5rem'} textAlign='center'>
+                                    <Box key={key.number}>{symbolName.name}</Box>
+                                </Button>
+                            )
+                        }
+                        )}
+                    </Box>
 
-                {/* Element name and short description */}
-                <Badge fontSize={{ base: '0.7em', lg: '1.2em' }}>{elementName.name}</Badge>
+                    <Box minW={'20rem'} boxShadow='2xl' p={'1rem'}>
 
-                <Box marginY='1.5rem'>{elementName.summary}</Box>
+                        {/* Element name and short description */}
+                        <Badge fontSize={{ base: '0.7em', lg: '1.2em' }}>{elementName.name}</Badge>
 
-                {/* Picture and details */}
+                        <Box marginY='1.5rem'>{elementName.summary}</Box>
 
-                <Box mb={'0.5rem'}>Spectral Image</Box>
+                        {/* Picture and details */}
 
-                <Image src={elementName.image} alt='Sample' />
-                <br />
-                <Box> Discovered by:  {elementName.discovered_by}</Box>
-                <Box> Number:  {elementName.number}</Box>
-                <Box> Symbol:  {elementName.symbol}</Box>
-                <Box> Phase:  {elementName.phase}</Box>
+                        <Box mb={'0.5rem'}>Spectral Image</Box>
 
-            </Box>
+                        <Image src={elementName.image} alt='Sample' />
+                        <br />
+                        <Box> Discovered by:  {elementName.discovered_by}</Box>
+                        <Box> Number:  {elementName.number}</Box>
+                        <Box> Symbol:  {elementName.symbol}</Box>
+                        <Box> Phase:  {elementName.phase}</Box>
+
+                    </Box>
+
+                </GridItem>
+            </Grid>
+
+
+
         </>
 
     )

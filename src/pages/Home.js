@@ -6,7 +6,7 @@ import { Grid, GridItem, Box } from '@chakra-ui/react'
 const Home = () => {
     return (
         <>
-            <Grid
+            {/* <Grid
                 templateAreas={`"periodic-table periodic-info"`}
                 gridTemplateColumns={'3fr 1fr'}
                 mx={'3rem'}
@@ -18,7 +18,8 @@ const Home = () => {
                 <GridItem area={'periodic-info'}>
                     <PeriodicData />
                 </GridItem>
-            </Grid>
+            </Grid> */}
+            <PeriodicData />
             <Box id="page-two-header" my={'2rem'} fontSize={'1.5em'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Box>
             <PageTwo />
         </>
