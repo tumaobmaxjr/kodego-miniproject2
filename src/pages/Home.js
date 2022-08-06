@@ -10,8 +10,9 @@ const Home = () => {
                 templateAreas={`"periodic-table periodic-info"`}
                 gridTemplateColumns={'3fr 1fr'}
                 mx={'3rem'}
+                mt={'1.5rem'}
             >
-                <GridItem area={'periodic-table'} mx={'auto'}>
+                <GridItem area={'periodic-table'} mx={'auto'} mt={'3.5rem'}>
                     <PeriodicTable />
                 </GridItem>
                 <GridItem area={'periodic-info'}>
