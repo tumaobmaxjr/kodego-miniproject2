@@ -20,7 +20,6 @@ const Home = () => {
                 </GridItem>
             </Grid> */}
             <PeriodicData />
-            <Box id="page-two-header" my={'2rem'} fontSize={'1.5em'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Box>
             <PageTwo />
         </>
     );
