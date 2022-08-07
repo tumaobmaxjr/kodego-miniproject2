@@ -61,6 +61,8 @@ function PeriodicData() {
                 category: cat,
             }
         });
+        // i was amazed that it is possible to add multiple setState in a function
+        setSearchName('');
     }
 
     return (
@@ -94,11 +96,11 @@ function PeriodicData() {
                                 style={{
                                     gridRow: element.ypos,
                                     gridColumn: element.xpos,
-                                    borderColor: colorMap[element.category],
-                                    backgroundColor: colorMap[element.category]
+                                    borderColor: 'black',
+                                    color: 'black',
+                                    backgroundColor: '#'+element['cpk-hex']
                                 }}
                             >
-                                {/* <p>{elementName}</p> */}
                                 <strong>{element.symbol}</strong>
                                 <small className="number">{element.number}</small>
                                 <small className="name">{element.name}</small>
@@ -117,13 +119,14 @@ function PeriodicData() {
                             boxShadow='md'
 
                             onChange={event => { setSearchName(event.target.value) }}
+                            onClick={event => { setSearchName(event.target.value = '') }}
                         />
                         {data.elements.filter((val => {
                             //if search name is empty it will retrun nothing
                             if (searchName == "") {
                                 return ('')
                             } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category)
+                                return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
                             }
                         })).map((symbolName, key) => {
                             return (

@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "./PeriodicTable.css";
 
-import { GridItem, Grid, Flex, Spacer, Center, Box } from "@chakra-ui/react";
+import { GridItem, Grid, Flex, Spacer, Center, Box, Button } from "@chakra-ui/react";
 
 const tabledataWidth = "4rem";
 const tabledataHeight = "4rem";
@@ -38,17 +39,21 @@ const ElementInfo = () => {
             <div id="elementsTableData">
                 {symbol.map((item) => (
                     <Flex my={"2rem"} className="asideContent" key={item.atomicNumber}>
-                        <Box
+                        <Button
+                            className="listOfElement"
                             style={{
                                 width: tabledataWidth,
                                 height: tabledataHeight,
                                 textAlign: "center",
                                 border: "1px solid black",
+                                color: 'black',
+                                backgroundColor: "#"+item.cpkHexColor,
+                                flexDirection: 'column'
                             }}
                         >
                             <p style={{ fontSize: atomicNumberSize }}>{item.atomicNumber}</p>
                             <p style={{ fontSize: symbolElementSize }}>{item.symbol}</p>
-                        </Box>
+                        </Button>
 
                         <Box my={"auto"} mx={"1rem"}>
                             <p style={{ fontSize: elementNameSize }}>{item.name}</p>
@@ -57,7 +62,7 @@ const ElementInfo = () => {
                         <Spacer />
 
                         <Box my={"auto"}>
-                            <p style={{ fontSize: elementNameSize }}>Chemical Group</p>
+                            <p style={{ fontSize: elementNameSize }}>{item.groupBlock}</p>
                         </Box>
                     </Flex>
                 ))}

@@ -4848,7 +4848,7 @@
             "electron_affinity": null,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Roentgenium",
@@ -4886,7 +4886,7 @@
             "electron_affinity": 151,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Copernicium",
@@ -4924,7 +4924,7 @@
             "electron_affinity": null,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Nihonium",
@@ -4962,7 +4962,7 @@
             "electron_affinity": 66.6,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Flerovium",
@@ -5000,7 +5000,7 @@
             "electron_affinity": null,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Moscovium",
@@ -5038,7 +5038,7 @@
             "electron_affinity": 35.3,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Livermorium",
@@ -5076,7 +5076,7 @@
             "electron_affinity": 74.9,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Tennessine",
@@ -5114,7 +5114,7 @@
             "electron_affinity": 165.9,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Oganesson",
@@ -5152,7 +5152,7 @@
             "electron_affinity": 5.40318,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         },
         {
             "name": "Ununennium",
@@ -5191,7 +5191,7 @@
             "electron_affinity": 63.87,
             "electronegativity_pauling": null,
             "ionization_energies": [],
-            "cpk-hex": null
+            "cpk-hex": "ffffff"
         }
     ]
 }
