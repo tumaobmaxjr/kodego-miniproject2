@@ -1,5 +1,7 @@
+import { useState } from "react";
 import data from "./PeriodicTableJSON.json";
 import "./PeriodicTable.css";
+import { background } from "@chakra-ui/react";
 
 const colorMap = {
   "noble gas": "#FFBC42",
@@ -19,12 +21,15 @@ const PeriodicTable = () => {
         <button
           className="element"
           key={element.name}
+          
           style={{
             gridRow: element.ypos,
             gridColumn: element.xpos,
-            borderColor: colorMap[element.category]
+            borderColor: colorMap[element.category],
+            backgroundColor: colorMap[element.category]
           }}
         >
+          {/* <p>{elementName}</p> */}
           <strong>{element.symbol}</strong>
           <small className="number">{element.number}</small>
           <small className="name">{element.name}</small>

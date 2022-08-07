@@ -20,7 +20,7 @@
   }
   
   .element:hover {
-    transform: scale(1.25, 1.25);
+    transform: scale(1.50, 1.50);
     z-index: 1;
   }
   
@@ -45,4 +45,28 @@
 #element-video{
   top: 2rem;
   position: sticky;
+}
+
+#page-two-header{
+  border-bottom: 2px solid teal;
+  text-align: center;
+}
+
+#elementChemgroup{
+  border-bottom: 2px solid teal;
+  padding-bottom: 1em;
+}
+
+.listOfElement:hover{
+  transform: scale(1.25, 1.25);
+  z-index: 1;
+}
+
+.asideContent{
+  border-bottom: 2px solid teal;
+  padding-bottom: 1em;
+}
+
+#symbolname{
+  border-bottom: 2px solid teal;
 }
