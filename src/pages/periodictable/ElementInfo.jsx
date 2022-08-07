@@ -4,24 +4,6 @@ import ReactPlayer from 'react-player'
 import { useEffect, useState } from "react";
 import "./PeriodicTable.css";
 
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
-// import Container from "@material-ui/core/Container";
-// import { makeStyles, withStyles } from "@material-ui/core/styles";
-
-// import Slider from "@material-ui/core/Slider";
-// import Tooltip from "@material-ui/core/Tooltip";
-// import Grid from "@material-ui/core/Grid";
-// import Paper from "@material-ui/core/Paper";
-// import VolumeUp from "@material-ui/icons/VolumeUp";
-// import VolumeDown from "@material-ui/icons/VolumeDown";
-// import VolumeMute from "@material-ui/icons/VolumeOff";
-// import FullScreen from "@material-ui/icons/Fullscreen";
-// import Popover from "@material-ui/core/Popover";
-// import screenful from "screenfull";
-// import Controls from "./components/Controls";
-
 import { GridItem, Grid, Flex, Spacer, Center, Box, Button, Input } from "@chakra-ui/react";
 
 const tabledataWidth = "4rem";
