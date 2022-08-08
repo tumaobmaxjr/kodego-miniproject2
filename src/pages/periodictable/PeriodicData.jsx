@@ -1,3 +1,4 @@
+//page`1
 import data from './PeriodicTableJSON.json'
 import React, { useState } from 'react';
 import "./PeriodicTable.css";
@@ -9,7 +10,8 @@ import {
     Badge, Image,
     List,
     ListItem, ListIcon, OrderedList, UnorderedList,
-    Input
+    Input,
+    Show, Hide,
 } from "@chakra-ui/react"
 
 const colorMap = {
@@ -69,16 +71,18 @@ function PeriodicData() {
 
         <>
             <Grid
-                templateAreas={`"periodic-table periodic-info"`}
+                templateAreas={`"omsim omsim"
+                                "periodic-table periodic-info"
+                                "skir skir"`}
                 gridTemplateColumns={'3fr 1fr'}
-                mx={'3rem'}
+                mx={{ base: '0rem', lg: '3rem' }}
                 mt={'1.5rem'}
             >
-                <GridItem area={'periodic-table'} mx={'auto'} mt={'3.5rem'}>
-                    <div className="periodic-table">
+                <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mx={'auto'} mt={'3.5rem'}>
+                    <Box className="periodic-table" width={'100%'}>
                         {data.elements.map((element, key) => (
                             <button
-                            onClick={() => changeName
+                                onClick={() => changeName
                                     (element.name,
                                         element.summary,
                                         element.spectral_img,
@@ -98,18 +102,22 @@ function PeriodicData() {
                                     gridColumn: element.xpos,
                                     borderColor: 'black',
                                     color: 'black',
-                                    backgroundColor: '#'+element['cpk-hex']
+                                    backgroundColor: '#' + element['cpk-hex']
                                 }}
                             >
-                                <strong>{element.symbol}</strong>
-                                <small className="number">{element.number}</small>
-                                <small className="name">{element.name}</small>
+                                <strong id='sym'>{element.symbol}</strong>
+
+                                <Hide below='md'>
+                                    <small className="number" display>{element.number}</small>
+                                    <small className="name">{element.name}</small>
+                                </Hide>
+
                             </button>
                         ))}
-                    </div>
+                    </Box>
                 </GridItem>
-                
-                <GridItem area={'periodic-info'}>
+
+                <GridItem area={{ base: 'omsim', xl: 'periodic-info' }}>
                     <Box m={"0.5rem"}>
                         <Input
                             color='teal'
