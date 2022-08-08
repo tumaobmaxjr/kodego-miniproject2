@@ -1,3 +1,4 @@
+// page2 components
 import React from "react";
 import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
@@ -61,12 +62,14 @@ const ElementInfo = () => {
     return (
         <>
             <Grid
-                templateAreas={`"element-info periodic-video"`}
+                templateAreas={`"omsim omsim"
+                                "element-info periodic-video"
+                                "skir skir"`}
                 gridTemplateColumns={'1fr 1fr'}
                 gap='1'
                 mx={'10%'}
             >
-                <GridItem area={'element-info'} px={'1rem'}>
+                <GridItem area={{ base: 'skir', lg: 'element-info'}} px={'1rem'}>
 
                     <Flex id="elementChemgroup">
                         <Box>Element Name</Box>
@@ -81,9 +84,11 @@ const ElementInfo = () => {
                                 <Button
                                     className="listOfElement"
                                     onClick={() => changeSymbolName(item.name, item.summary, item.video)}
+                                    width={{ base: '2.5rem', md: tabledataWidth }}
+                                    height={{ base: '2.5rem', md: tabledataHeight }}
                                     style={{
-                                        width: tabledataWidth,
-                                        height: tabledataHeight,
+                                        // width: tabledataWidth,
+                                        // height: tabledataHeight,
                                         textAlign: "center",
                                         border: "1px solid black",
                                         color: 'black',
@@ -91,18 +96,18 @@ const ElementInfo = () => {
                                         flexDirection: 'column'
                                     }}
                                 >
-                                    <p style={{ fontSize: atomicNumberSize }}>{item.atomicNumber}</p>
-                                    <p style={{ fontSize: symbolElementSize }}>{item.symbol}</p>
+                                    <Box  fontSize={atomicNumberSize}>{item.number}</Box>
+                                    <Box  fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
                                 </Button>
 
                                 <Box my={"auto"} mx={"1rem"}>
-                                    <p style={{ fontSize: elementNameSize }}>{item.name}</p>
+                                    <Box fontSize={{ base: '1em', md: elementNameSize }}>{item.name}</Box>
                                 </Box>
 
                                 <Spacer />
 
                                 <Box my={"auto"}>
-                                    <p style={{ fontSize: elementNameSize }}>{item.category}</p>
+                                    <Box style={{textAlign: 'right'}} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
                                 </Box>
                             </Flex>
                         ))}
@@ -110,7 +115,7 @@ const ElementInfo = () => {
                 </GridItem>
 
                 {/* Video */}
-                <GridItem area={'periodic-video'}>
+                <GridItem area={{ base: 'omsim', lg: 'periodic-video'}}>
                     <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
                         <Input color='teal'
                             placeholder='Search Element'
@@ -142,7 +147,7 @@ const ElementInfo = () => {
                         }
                         )}
 
-                        <Box width={'40rem'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
+                        <Box width={'100%'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
                             <ReactPlayer
                             controls
                             width={'100%'}
@@ -154,8 +159,6 @@ const ElementInfo = () => {
                             <br />
                             {symbolName.summary}
                         </Box>
-                        <Button backgroundColor={'green'} ms={'auto'} me={'1rem'} mt={'2rem'}>Go up button message</Button>
-                        <Button backgroundColor={'green'} ms={'auto'} me={'1rem'} mt={'2rem'}>message button</Button>
                     </Flex>
                 </GridItem>
 
