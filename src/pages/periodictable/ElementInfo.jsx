@@ -5,7 +5,20 @@ import ReactPlayer from 'react-player'
 import { useEffect, useState } from "react";
 import "./PeriodicTable.css";
 
-import { GridItem, Grid, Flex, Spacer, Center, Box, Button, Input } from "@chakra-ui/react";
+import {
+    GridItem, Grid,
+    Flex, Spacer,
+    Center, Box, Button,
+    Input,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+} from "@chakra-ui/react";
 
 const tabledataWidth = "4rem";
 const tabledataHeight = "4rem";
@@ -58,9 +71,65 @@ const ElementInfo = () => {
         setSearchName('');
     }
 
+    // for modal
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
     return (
         <>
+
+            <Modal
+                top={'70%'}
+                isOpen={isOpen}
+                onClose={onClose}
+                scrollBehavior={scrollBehavior}
+                motionPreset='slideInBottom'>
+                {/* <ModalOverlay /> */}
+                <ModalOverlay
+                    backdropFilter='blur(10px) hue-rotate(5deg)'
+                    backdropInvert='80%'
+                    backdropBlur='2px'
+                />
+                <ModalContent>
+                    <ModalHeader>Search Element Name</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={'1rem'}>
+                        <Box>
+                            <Input color='teal'
+                                placeholder='Search Element'
+                                _placeholder={{ color: 'inherit' }}
+                                size='md'
+                                boxShadow='md'
+
+                                onChange={event => { setSearchName(event.target.value) }}
+                                onClick={event => { setSearchName(event.target.value = '') }}
+                            />
+                            {data.elements.filter((val => {
+                                //if search name is empty it will retrun nothing
+                                if (searchName == "") {
+                                    return ('')
+                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                    return (val.name, val.summary, val.category, val.video)
+                                }
+                            })).map((symbolName, key) => {
+                                return (
+                                    <Button onClick={onClose} id='wrapper-button'>
+                                        <Button onClick={() => changeSymbolName
+                                            (symbolName.name,
+                                                symbolName.summary,
+                                                symbolName.video,
+                                            )} my={'0.5rem'} textAlign='center'>
+                                            <Box key={key.number}>{symbolName.name}</Box>
+                                        </Button>
+                                    </Button>
+                                )
+                            }
+                            )}
+                        </Box>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+
             <Grid
                 templateAreas={`"omsim omsim"
                                 "element-info periodic-video"
@@ -69,12 +138,12 @@ const ElementInfo = () => {
                 gap='1'
                 mx={'10%'}
             >
-                <GridItem area={{ base: 'skir', lg: 'element-info'}} px={'1rem'}>
+                <GridItem area={{ base: 'skir', lg: 'element-info' }} px={'1rem'}>
 
                     <Flex id="elementChemgroup">
-                        <Box>Element Name</Box>
+                        <Box fontWeight={'semibold'}>Element Name</Box>
                         <Spacer />
-                        <Box>Group Block</Box>
+                        <Box fontWeight={'semibold'}>Group Block</Box>
                     </Flex>
 
                     {/* Button */}
@@ -96,8 +165,8 @@ const ElementInfo = () => {
                                         flexDirection: 'column'
                                     }}
                                 >
-                                    <Box  fontSize={atomicNumberSize}>{item.number}</Box>
-                                    <Box  fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
+                                    <Box fontSize={atomicNumberSize}>{item.number}</Box>
+                                    <Box fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
                                 </Button>
 
                                 <Box my={"auto"} mx={"1rem"}>
@@ -107,7 +176,7 @@ const ElementInfo = () => {
                                 <Spacer />
 
                                 <Box my={"auto"}>
-                                    <Box style={{textAlign: 'right'}} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
+                                    <Box style={{ textAlign: 'right' }} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
                                 </Box>
                             </Flex>
                         ))}
@@ -115,44 +184,25 @@ const ElementInfo = () => {
                 </GridItem>
 
                 {/* Video */}
-                <GridItem area={{ base: 'omsim', lg: 'periodic-video'}}>
+                <GridItem area={{ base: 'omsim', lg: 'periodic-video' }}>
                     <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
-                        <Input color='teal'
+
+                        <Input
+                            color='teal'
                             placeholder='Search Element'
                             _placeholder={{ color: 'inherit' }}
                             size='md'
                             boxShadow='md'
 
-                            onChange={event => { setSearchName(event.target.value) }}
-                            onClick={event => { setSearchName(event.target.value = '') }}
+                            onClick={onOpen}
                         />
-
-                        {data.elements.filter((val => {
-                            //if search name is empty it will retrun nothing
-                            if (searchName == "") {
-                                return ('')
-                            } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                return (val.name, val.summary, val.category, val.video)
-                            }
-                        })).map((symbolName, key) => {
-                            return (
-                                <Button onClick={() => changeSymbolName
-                                    (symbolName.name,
-                                        symbolName.summary,
-                                        symbolName.video,
-                                    )} my={'0.5rem'} textAlign='center'>
-                                    <Box key={key.number}>{symbolName.name}</Box>
-                                </Button>
-                            )
-                        }
-                        )}
 
                         <Box width={'100%'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
                             <ReactPlayer
-                            controls
-                            width={'100%'}
-                            height={'100%'}
-                            url={symbolName.video}/>
+                                controls
+                                width={'100%'}
+                                height={'100%'}
+                                url={symbolName.video} />
                         </Box>
                         <Box my={'1rem'}>
                             <Box>Description about the Element <span id="symbolname">{symbolName.name}</span></Box>

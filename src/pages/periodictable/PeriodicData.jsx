@@ -12,6 +12,14 @@ import {
     ListItem, ListIcon, OrderedList, UnorderedList,
     Input,
     Show, Hide,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
 } from "@chakra-ui/react"
 
 const colorMap = {
@@ -67,9 +75,71 @@ function PeriodicData() {
         setSearchName('');
     }
 
+    // for modal
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [scrollBehavior, setScrollBehavior] = React.useState('inside')
+
     return (
 
         <>
+
+            <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
+                {/* <ModalOverlay /> */}
+                <ModalOverlay
+                    backdropFilter='blur(10px) hue-rotate(5deg)'
+                    backdropInvert='80%'
+                    backdropBlur='2px'
+                />
+                <ModalContent>
+                    <ModalHeader>Search Element Name</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={'1rem'}>
+                        <Box>
+                            <Input
+                                color='teal'
+                                placeholder='Search Element'
+                                _placeholder={{ color: 'inherit' }}
+                                size='md'
+                                boxShadow='md'
+
+                                onChange={event => { setSearchName(event.target.value) }}
+                                onClick={event => { setSearchName(event.target.value = '') }}
+                            />
+                            {data.elements.filter((val => {
+                                //if search name is empty it will retrun nothing
+                                if (searchName == "") {
+                                    return ('')
+                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                    return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
+                                }
+                            })).map((symbolName, key) => {
+                                return (
+                                    //wrapper button
+                                    <Button onClick={onClose} id='wrapper-button'>
+                                        <Button onClick={() => changeName
+                                            (symbolName.name,
+                                                symbolName.summary,
+                                                symbolName.spectral_img,
+                                                symbolName.symbol,
+                                                symbolName.discovered_by,
+                                                symbolName.number,
+                                                symbolName.phase,
+                                                symbolName.xpos,
+                                                symbolName.ypos,
+                                                symbolName.category,
+                                            )}
+                                            my={'0.5rem'} textAlign='center'>
+                                            <Box key={key.number}>{symbolName.name}</Box>
+                                        </Button>
+                                    </Button>
+                                )
+                            }
+                            )}
+                        </Box>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+
             <Grid
                 templateAreas={`"omsim omsim"
                                 "periodic-table periodic-info"
@@ -117,6 +187,7 @@ function PeriodicData() {
                     </Box>
                 </GridItem>
 
+                {/* Elements data side */}
                 <GridItem area={{ base: 'omsim', xl: 'periodic-info' }}>
                     <Box m={"0.5rem"}>
                         <Input
@@ -126,35 +197,8 @@ function PeriodicData() {
                             size='md'
                             boxShadow='md'
 
-                            onChange={event => { setSearchName(event.target.value) }}
-                            onClick={event => { setSearchName(event.target.value = '') }}
+                            onClick={onOpen}
                         />
-                        {data.elements.filter((val => {
-                            //if search name is empty it will retrun nothing
-                            if (searchName == "") {
-                                return ('')
-                            } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
-                            }
-                        })).map((symbolName, key) => {
-                            return (
-                                <Button onClick={() => changeName
-                                    (symbolName.name,
-                                        symbolName.summary,
-                                        symbolName.spectral_img,
-                                        symbolName.symbol,
-                                        symbolName.discovered_by,
-                                        symbolName.number,
-                                        symbolName.phase,
-                                        symbolName.xpos,
-                                        symbolName.ypos,
-                                        symbolName.category,
-                                    )} my={'0.5rem'} textAlign='center'>
-                                    <Box key={key.number}>{symbolName.name}</Box>
-                                </Button>
-                            )
-                        }
-                        )}
                     </Box>
 
                     <Box minW={'20rem'} boxShadow='2xl' p={'1rem'}>
