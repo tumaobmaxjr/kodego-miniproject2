@@ -72,9 +72,10 @@ const ElementInfo = () => {
         molarheat: '28.836',
         density: '0.08988',
         period: '1',
+        source: 'https://en.wikipedia.org/wiki/Hydrogen'
     });
 
-    const changeSymbolName = (name, summ, vid, melt, boint, mheat, dens, per) => {
+    const changeSymbolName = (name, summ, vid, melt, boint, mheat, dens, per, sauce) => {
         setSymbolName(previousState => {
             return {
                 name: name,
@@ -85,7 +86,7 @@ const ElementInfo = () => {
                 molarheat: mheat,
                 density: dens,
                 period: per,
-
+                source: sauce,
             }
         });
         setSearchName('');
@@ -138,7 +139,8 @@ const ElementInfo = () => {
                                         val.boil,
                                         val.molar_heat,
                                         val.density,
-                                        val.period)
+                                        val.period,
+                                        val.source)
                                 }
                             })).map((symbolName, key) => {
                                 return (
@@ -151,7 +153,8 @@ const ElementInfo = () => {
                                                 symbolName.boil,
                                                 symbolName.molar_heat,
                                                 symbolName.density,
-                                                symbolName.period
+                                                symbolName.period,
+                                                symbolName.source,
                                             )} my={'0.5rem'} textAlign='center'>
                                             <Box key={key.number}>{symbolName.name}</Box>
                                         </Button>
@@ -186,7 +189,16 @@ const ElementInfo = () => {
                             <Flex my={"2rem"} className="asideContent" key={item.atomicNumber}>
                                 <Button
                                     className="listOfElement"
-                                    onClick={() => changeSymbolName(item.name, item.summary, item.video)}
+                                    onClick={() => changeSymbolName(
+                                        item.name, 
+                                        item.summary, 
+                                        item.video, 
+                                        item.melt,
+                                        item.boil,
+                                        item.molar_heat,
+                                        item.density,
+                                        item.period,
+                                        item.source,)}
                                     width={{ base: '2.5rem', md: tabledataWidth }}
                                     height={{ base: '2.5rem', md: tabledataHeight }}
                                     style={{
@@ -266,7 +278,7 @@ const ElementInfo = () => {
                                     </Tr>
                                 </Tbody>
                             </Table>
-                            <a href="https://en.wikipedia.org/wiki/Hydrogen" target="_blank">
+                            <a href={symbolName.source} target="_blank">
                                 <Button mx={'auto'} mt={'1em'}>Learn more</Button>
                             </a>
                         </TableContainer>
