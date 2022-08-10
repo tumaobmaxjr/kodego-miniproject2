@@ -2,7 +2,7 @@
 import React from "react";
 import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./PeriodicTable.css";
 
 import {
@@ -29,12 +29,12 @@ import {
     TableContainer,
 } from "@chakra-ui/react";
 
-const tabledataWidth = "4rem";
-const tabledataHeight = "4rem";
+const tabledataWidth = "3.5rem";
+const tabledataHeight = "3.5rem";
 
 const atomicNumberSize = "0.65em";
 const symbolElementSize = "1.5em";
-const elementNameSize = "1.5em";
+const elementNameSize = "1.3em";
 
 const ElementInfo = () => {
 
@@ -239,11 +239,11 @@ const ElementInfo = () => {
                             _placeholder={{ color: 'inherit' }}
                             size='md'
                             boxShadow='md'
-
+                            
                             onClick={onOpen}
                         />
 
-                        <Box width={'100%'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
+                        <Box width={'100%'} height={'20rem'} backgroundColor={'teal'} my={'1rem'} mx={'auto'}>
                             <ReactPlayer
                                 controls
                                 width={'100%'}
