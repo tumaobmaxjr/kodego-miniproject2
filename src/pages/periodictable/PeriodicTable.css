@@ -4,45 +4,12 @@
     grid-template-columns: repeat(18, 3.2rem);
     grid-template-rows: repeat(10, 3.2rem);
     grid-gap: 4px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
   }
-
-  @media screen and (max-width: 1023px) {
-    .periodic-table {
-      grid-template-columns: repeat(18, 2.8rem);
-      grid-template-rows: repeat(10, 2.8rem);
-    }
-  }
-  @media screen and (max-width: 866px) {
-    .periodic-table {
-      grid-template-columns: repeat(18, 2.3rem);
-      grid-template-rows: repeat(10, 2.3rem);
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .periodic-table {
-      grid-template-columns: repeat(18, 2rem);
-      grid-template-rows: repeat(10, 2rem);
-    }
-  }
-  @media screen and (max-width: 670px) {
-    .periodic-table {
-      grid-template-columns: repeat(18, 1.5rem);
-      grid-template-rows: repeat(10, 1.5rem);
-    }
-  }
-  @media screen and (max-width: 450px) {
-    .periodic-table {
-      grid-template-columns: repeat(18, 1rem);
-      grid-template-rows: repeat(10, 1rem);
-    }
-  }
-
-#wrapper-button{
-  padding: 0;
-  margin: 0.3rem;
-  color: none;
-}
-
+  
   .element {
     /* background: white; */
     border: 1px solid #aaa;
@@ -51,15 +18,10 @@
     align-items: center;
     justify-content: center;
   }
-  @media screen and (max-width: 670px) {
-    #sym{
-      font-size: 8px;
-    }
-  } 
-
+  
   .element:hover {
     transform: scale(1.50, 1.50);
-    z-index: 1; 
+    z-index: 1;
   }
   
   .element .number {
