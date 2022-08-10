@@ -1,72 +1,110 @@
 /*Home page - Periodic Table Style */
 .periodic-table {
-    display: grid;
-    grid-template-columns: repeat(18, 3.2rem);
-    grid-template-rows: repeat(10, 3.2rem);
-    grid-gap: 4px;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-  }
-  
-  .element {
-    /* background: white; */
-    border: 1px solid #aaa;
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .element:hover {
-    transform: scale(1.50, 1.50);
-    z-index: 1;
-  }
-  
-  .element .number {
-    font-size: 8px;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-  }
-  
-  .element .name {
-    font-size: 8px;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-  }
+  display: grid;
+  grid-template-columns: repeat(18, 3.2rem);
+  grid-template-rows: repeat(10, 3.2rem);
+  grid-gap: 4px;
+}
 
-  .periodic-table{
-    width: 100%;
+@media screen and (max-width: 1023px) {
+  .periodic-table {
+    grid-template-columns: repeat(18, 2.8rem);
+    grid-template-rows: repeat(10, 2.8rem);
   }
+}
+@media screen and (max-width: 866px) {
+  .periodic-table {
+    grid-template-columns: repeat(18, 2.3rem);
+    grid-template-rows: repeat(10, 2.3rem);
+  }
+}
+@media screen and (max-width: 767px) {
+  .periodic-table {
+    grid-template-columns: repeat(18, 2rem);
+    grid-template-rows: repeat(10, 2rem);
+  }
+}
+@media screen and (max-width: 670px) {
+  .periodic-table {
+    grid-template-columns: repeat(18, 1.5rem);
+    grid-template-rows: repeat(10, 1.5rem);
+  }
+}
+@media screen and (max-width: 450px) {
+  .periodic-table {
+    grid-template-columns: repeat(18, 1rem);
+    grid-template-rows: repeat(10, 1rem);
+  }
+}
+
+#wrapper-button{
+padding: 0;
+margin: 0.3rem;
+color: none;
+}
+
+.element {
+  /* background: white; */
+  border: 1px solid #aaa;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 670px) {
+  #sym{
+    font-size: 8px;
+  }
+} 
+
+.element:hover {
+  transform: scale(1.50, 1.50);
+  z-index: 1; 
+}
+
+.element .number {
+  font-size: 8px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.element .name {
+  font-size: 8px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.periodic-table{
+  width: 100%;
+}
 
 #element-video{
-  top: 2rem;
-  position: sticky;
+top: 2rem;
+position: sticky;
 }
 
 #page-two-header{
-  border-bottom: 2px solid teal;
-  text-align: center;
+border-bottom: 2px solid teal;
+text-align: center;
 }
 
 #elementChemgroup{
-  border-bottom: 2px solid teal;
-  padding-bottom: 1em;
+border-bottom: 2px solid teal;
+padding-bottom: 1em;
 }
 
 .listOfElement:hover{
-  transform: scale(1.25, 1.25);
-  z-index: 1;
+transform: scale(1.25, 1.25);
+z-index: 1;
 }
 
 .asideContent{
-  border-bottom: 2px solid teal;
-  padding-bottom: 1em;
+border-bottom: 2px solid teal;
+padding-bottom: 1em;
 }
 
 #symbolname{
-  border-bottom: 2px solid teal;
+border-bottom: 2px solid teal;
 }
