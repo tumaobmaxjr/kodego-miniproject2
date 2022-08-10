@@ -1,4 +1,3 @@
-//page`1
 import data from './PeriodicTableJSON.json'
 import React, { useState } from 'react';
 import "./PeriodicTable.css";
@@ -10,16 +9,7 @@ import {
     Badge, Image,
     List,
     ListItem, ListIcon, OrderedList, UnorderedList,
-    Input,
-    Show, Hide,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
+    Input
 } from "@chakra-ui/react"
 
 const colorMap = {
@@ -41,7 +31,7 @@ function PeriodicData() {
         name: 'Hydrogen',
         summary: 'Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.00794 u, hydrogen is the lightest element on the periodic table. Its monatomic form (H) is the most abundant chemical substance in the Universe, constituting roughly 75% of all baryonic mass.',
 
-        image: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Hydrogen_Spectra.jpg',
+        image: 'https://storage.googleapis.com/search-ar-edu/periodic-table/element_001_hydrogen/element_001_hydrogen_srp_th.png',
 
         symbol: 'H',
         discovered_by: 'Henry Cavendish',
@@ -75,87 +65,24 @@ function PeriodicData() {
         setSearchName('');
     }
 
-    // for modal
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const [scrollBehavior, setScrollBehavior] = React.useState('inside')
-
     return (
 
         <>
-
-            <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
-                {/* <ModalOverlay /> */}
-                <ModalOverlay
-                    backdropFilter='blur(10px) hue-rotate(5deg)'
-                    backdropInvert='80%'
-                    backdropBlur='2px'
-                />
-                <ModalContent>
-                    <ModalHeader>Search Element Name</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={'1rem'}>
-                        <Box>
-                            <Input
-                                color='teal'
-                                placeholder='Search Element'
-                                _placeholder={{ color: 'inherit' }}
-                                size='md'
-                                boxShadow='md'
-
-                                onChange={event => { setSearchName(event.target.value) }}
-                                onClick={event => { setSearchName(event.target.value = '') }}
-                            />
-                            {data.elements.filter((val => {
-                                //if search name is empty it will retrun nothing
-                                if (searchName == "") {
-                                    return ('')
-                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
-                                }
-                            })).map((symbolName, key) => {
-                                return (
-                                    //wrapper button
-                                    <Button onClick={onClose} id='wrapper-button'>
-                                        <Button onClick={() => changeName
-                                            (symbolName.name,
-                                                symbolName.summary,
-                                                symbolName.spectral_img,
-                                                symbolName.symbol,
-                                                symbolName.discovered_by,
-                                                symbolName.number,
-                                                symbolName.phase,
-                                                symbolName.xpos,
-                                                symbolName.ypos,
-                                                symbolName.category,
-                                            )}
-                                            my={'0.5rem'} textAlign='center'>
-                                            <Box key={key.number}>{symbolName.name}</Box>
-                                        </Button>
-                                    </Button>
-                                )
-                            }
-                            )}
-                        </Box>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
-
             <Grid
-                templateAreas={`"omsim omsim"
-                                "periodic-table periodic-info"
-                                "skir skir"`}
+                templateAreas={`"periodic-table periodic-info"`}
                 gridTemplateColumns={'3fr 1fr'}
-                mx={{ base: '0rem', lg: '3rem' }}
+                mx={'3rem'}
                 mt={'1.5rem'}
             >
-                <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mx={'auto'} mt={'3.5rem'}>
-                    <Box className="periodic-table" width={'100%'}>
+                <GridItem area={'periodic-table'} mx={'auto'} mt={'3.5rem'}>
+                    <div className="periodic-table">
                         {data.elements.map((element, key) => (
                             <button
-                                onClick={() => changeName
+                            onClick={() => changeName
                                     (element.name,
                                         element.summary,
-                                        element.spectral_img,
+                                        // element.spectral_img,
+                                        element.bohr_model_image,
                                         element.symbol,
                                         element.discovered_by,
                                         element.number,
@@ -172,23 +99,18 @@ function PeriodicData() {
                                     gridColumn: element.xpos,
                                     borderColor: 'black',
                                     color: 'black',
-                                    backgroundColor: '#' + element['cpk-hex']
+                                    backgroundColor: '#'+element['cpk-hex']
                                 }}
                             >
-                                <strong id='sym'>{element.symbol}</strong>
-
-                                <Hide below='md'>
-                                    <small className="number" display>{element.number}</small>
-                                    <small className="name">{element.name}</small>
-                                </Hide>
-
+                                <strong>{element.symbol}</strong>
+                                <small className="number">{element.number}</small>
+                                <small className="name">{element.name}</small>
                             </button>
                         ))}
-                    </Box>
+                    </div>
                 </GridItem>
-
-                {/* Elements data side */}
-                <GridItem area={{ base: 'omsim', xl: 'periodic-info' }}>
+                
+                <GridItem area={'periodic-info'}>
                     <Box m={"0.5rem"}>
                         <Input
                             color='teal'
@@ -197,8 +119,36 @@ function PeriodicData() {
                             size='md'
                             boxShadow='md'
 
-                            onClick={onOpen}
+                            onChange={event => { setSearchName(event.target.value) }}
+                            onClick={event => { setSearchName(event.target.value = '') }}
                         />
+                        {data.elements.filter((val => {
+                            //if search name is empty it will retrun nothing
+                            if (searchName == "") {
+                                return ('')
+                            } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
+                            }
+                        })).map((symbolName, key) => {
+                            return (
+                                <Button onClick={() => changeName
+                                    (symbolName.name,
+                                        symbolName.summary,
+                                        // symbolName.spectral_img,
+                                        symbolName.bohr_model_image,
+                                        symbolName.symbol,
+                                        symbolName.discovered_by,
+                                        symbolName.number,
+                                        symbolName.phase,
+                                        symbolName.xpos,
+                                        symbolName.ypos,
+                                        symbolName.category,
+                                    )} my={'0.5rem'} textAlign='center'>
+                                    <Box key={key.number}>{symbolName.name}</Box>
+                                </Button>
+                            )
+                        }
+                        )}
                     </Box>
 
                     <Box minW={'20rem'} boxShadow='2xl' p={'1rem'}>
@@ -210,7 +160,7 @@ function PeriodicData() {
 
                         {/* Picture and details */}
 
-                        <Box mb={'0.5rem'}>Spectral Image</Box>
+                        <Box mb={'0.5rem'}>Bohr Model Image</Box>
 
                         <Image src={elementName.image} alt='Sample' />
                         <br />

@@ -1,24 +1,28 @@
-// page2 components
 import React from "react";
 import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
 import { useEffect, useState } from "react";
 import "./PeriodicTable.css";
 
-import {
-    GridItem, Grid,
-    Flex, Spacer,
-    Center, Box, Button,
-    Input,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-} from "@chakra-ui/react";
+// import AppBar from "@material-ui/core/AppBar";
+// import Toolbar from "@material-ui/core/Toolbar";
+// import Typography from "@material-ui/core/Typography";
+// import Container from "@material-ui/core/Container";
+// import { makeStyles, withStyles } from "@material-ui/core/styles";
+
+// import Slider from "@material-ui/core/Slider";
+// import Tooltip from "@material-ui/core/Tooltip";
+// import Grid from "@material-ui/core/Grid";
+// import Paper from "@material-ui/core/Paper";
+// import VolumeUp from "@material-ui/icons/VolumeUp";
+// import VolumeDown from "@material-ui/icons/VolumeDown";
+// import VolumeMute from "@material-ui/icons/VolumeOff";
+// import FullScreen from "@material-ui/icons/Fullscreen";
+// import Popover from "@material-ui/core/Popover";
+// import screenful from "screenfull";
+// import Controls from "./components/Controls";
+
+import { GridItem, Grid, Flex, Spacer, Center, Box, Button, Input } from "@chakra-ui/react";
 
 const tabledataWidth = "4rem";
 const tabledataHeight = "4rem";
@@ -71,79 +75,21 @@ const ElementInfo = () => {
         setSearchName('');
     }
 
-    // for modal
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
     return (
         <>
-
-            <Modal
-                top={'70%'}
-                isOpen={isOpen}
-                onClose={onClose}
-                scrollBehavior={scrollBehavior}
-                motionPreset='slideInBottom'>
-                {/* <ModalOverlay /> */}
-                <ModalOverlay
-                    backdropFilter='blur(10px) hue-rotate(5deg)'
-                    backdropInvert='80%'
-                    backdropBlur='2px'
-                />
-                <ModalContent>
-                    <ModalHeader>Search Element Name</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={'1rem'}>
-                        <Box>
-                            <Input color='teal'
-                                placeholder='Search Element'
-                                _placeholder={{ color: 'inherit' }}
-                                size='md'
-                                boxShadow='md'
-
-                                onChange={event => { setSearchName(event.target.value) }}
-                                onClick={event => { setSearchName(event.target.value = '') }}
-                            />
-                            {data.elements.filter((val => {
-                                //if search name is empty it will retrun nothing
-                                if (searchName == "") {
-                                    return ('')
-                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.category, val.video)
-                                }
-                            })).map((symbolName, key) => {
-                                return (
-                                    <Button onClick={onClose} id='wrapper-button'>
-                                        <Button onClick={() => changeSymbolName
-                                            (symbolName.name,
-                                                symbolName.summary,
-                                                symbolName.video,
-                                            )} my={'0.5rem'} textAlign='center'>
-                                            <Box key={key.number}>{symbolName.name}</Box>
-                                        </Button>
-                                    </Button>
-                                )
-                            }
-                            )}
-                        </Box>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
-
             <Grid
-                templateAreas={`"omsim omsim"
-                                "element-info periodic-video"
-                                "skir skir"`}
+                templateAreas={`"element-info periodic-video"`}
                 gridTemplateColumns={'1fr 1fr'}
                 gap='1'
                 mx={'10%'}
             >
-                <GridItem area={{ base: 'skir', lg: 'element-info' }} px={'1rem'}>
+                <GridItem area={'element-info'} px={'1rem'}>
 
                     <Flex id="elementChemgroup">
-                        <Box fontWeight={'semibold'}>Element Name</Box>
+                        <Box>Element Name</Box>
                         <Spacer />
-                        <Box fontWeight={'semibold'}>Group Block</Box>
+                        <Box>Group Block</Box>
                     </Flex>
 
                     {/* Button */}
@@ -153,11 +99,9 @@ const ElementInfo = () => {
                                 <Button
                                     className="listOfElement"
                                     onClick={() => changeSymbolName(item.name, item.summary, item.video)}
-                                    width={{ base: '2.5rem', md: tabledataWidth }}
-                                    height={{ base: '2.5rem', md: tabledataHeight }}
                                     style={{
-                                        // width: tabledataWidth,
-                                        // height: tabledataHeight,
+                                        width: tabledataWidth,
+                                        height: tabledataHeight,
                                         textAlign: "center",
                                         border: "1px solid black",
                                         color: 'black',
@@ -165,18 +109,18 @@ const ElementInfo = () => {
                                         flexDirection: 'column'
                                     }}
                                 >
-                                    <Box fontSize={atomicNumberSize}>{item.number}</Box>
-                                    <Box fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
+                                    <p style={{ fontSize: atomicNumberSize }}>{item.atomicNumber}</p>
+                                    <p style={{ fontSize: symbolElementSize }}>{item.symbol}</p>
                                 </Button>
 
                                 <Box my={"auto"} mx={"1rem"}>
-                                    <Box fontSize={{ base: '1em', md: elementNameSize }}>{item.name}</Box>
+                                    <p style={{ fontSize: elementNameSize }}>{item.name}</p>
                                 </Box>
 
                                 <Spacer />
 
                                 <Box my={"auto"}>
-                                    <Box style={{ textAlign: 'right' }} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
+                                    <p style={{ fontSize: elementNameSize }}>{item.category}</p>
                                 </Box>
                             </Flex>
                         ))}
@@ -184,31 +128,52 @@ const ElementInfo = () => {
                 </GridItem>
 
                 {/* Video */}
-                <GridItem area={{ base: 'omsim', lg: 'periodic-video' }}>
+                <GridItem area={'periodic-video'}>
                     <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
-
-                        <Input
-                            color='teal'
+                        <Input color='teal'
                             placeholder='Search Element'
                             _placeholder={{ color: 'inherit' }}
                             size='md'
                             boxShadow='md'
 
-                            onClick={onOpen}
+                            onChange={event => { setSearchName(event.target.value) }}
+                            onClick={event => { setSearchName(event.target.value = '') }}
                         />
 
-                        <Box width={'100%'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
+                        {data.elements.filter((val => {
+                            //if search name is empty it will retrun nothing
+                            if (searchName == "") {
+                                return ('')
+                            } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                return (val.name, val.summary, val.category, val.video)
+                            }
+                        })).map((symbolName, key) => {
+                            return (
+                                <Button onClick={() => changeSymbolName
+                                    (symbolName.name,
+                                        symbolName.summary,
+                                        symbolName.video,
+                                    )} my={'0.5rem'} textAlign='center'>
+                                    <Box key={key.number}>{symbolName.name}</Box>
+                                </Button>
+                            )
+                        }
+                        )}
+
+                        <Box width={'40rem'} height={'20rem'} backgroundColor={'pink'} my={'1rem'} mx={'auto'}>
                             <ReactPlayer
-                                controls
-                                width={'100%'}
-                                height={'100%'}
-                                url={symbolName.video} />
+                            controls
+                            width={'100%'}
+                            height={'100%'}
+                            url={symbolName.video}/>
                         </Box>
                         <Box my={'1rem'}>
                             <Box>Description about the Element <span id="symbolname">{symbolName.name}</span></Box>
                             <br />
                             {symbolName.summary}
                         </Box>
+                        <Button backgroundColor={'green'} ms={'auto'} me={'1rem'} mt={'2rem'}>Go up button message</Button>
+                        <Button backgroundColor={'green'} ms={'auto'} me={'1rem'} mt={'2rem'}>message button</Button>
                     </Flex>
                 </GridItem>
 

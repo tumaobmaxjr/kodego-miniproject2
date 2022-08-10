@@ -16,6 +16,7 @@ export default function App() {
         <NavbarLayout />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="home" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
@@ -28,3 +29,5 @@ export default function App() {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
+
+//hello
