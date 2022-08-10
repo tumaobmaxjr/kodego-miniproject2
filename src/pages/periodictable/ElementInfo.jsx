@@ -252,7 +252,7 @@ const ElementInfo = () => {
                         </Box>
                         {/* Description */}
                         <Box my={'1rem'}>
-                            <Box>Description about the Element <span id="symbolname">{symbolName.name}</span></Box>
+                            <Box>Description about the Element <span id="symbolname"><a href={symbolName.source} target="_blank">{symbolName.name}</a></span></Box>
                             <br />
                             {symbolName.summary}
                         </Box>
