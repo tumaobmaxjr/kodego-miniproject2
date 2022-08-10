@@ -18,6 +18,15 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+    TableContainer,
 } from "@chakra-ui/react";
 
 const tabledataWidth = "4rem";
@@ -58,14 +67,25 @@ const ElementInfo = () => {
         summary: 'Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.00794 u, hydrogen is the lightest element on the periodic table. Its monatomic form (H) is the most abundant chemical substance in the Universe, constituting roughly 75% of all baryonic mass.',
         category: "diatomic nonmetal",
         video: 'https://youtu.be/cxFb4hmfVT0',
+        melt: '13.99',
+        boilingpoint: '20.271',
+        molarheat: '28.836',
+        density: '0.08988',
+        period: '1',
     });
 
-    const changeSymbolName = (name, summ, vid) => {
+    const changeSymbolName = (name, summ, vid, melt, boint, mheat, dens, per) => {
         setSymbolName(previousState => {
             return {
                 name: name,
                 summary: summ,
                 video: vid,
+                melt: melt,
+                boilingpoint: boint,
+                molarheat: mheat,
+                density: dens,
+                period: per,
+
             }
         });
         setSearchName('');
@@ -109,7 +129,16 @@ const ElementInfo = () => {
                                 if (searchName == "") {
                                     return ('')
                                 } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.category, val.video)
+                                    return (
+                                        val.name,
+                                        val.summary,
+                                        val.category,
+                                        val.video,
+                                        val.melt,
+                                        val.boil,
+                                        val.molar_heat,
+                                        val.density,
+                                        val.period)
                                 }
                             })).map((symbolName, key) => {
                                 return (
@@ -118,6 +147,11 @@ const ElementInfo = () => {
                                             (symbolName.name,
                                                 symbolName.summary,
                                                 symbolName.video,
+                                                symbolName.melt,
+                                                symbolName.boil,
+                                                symbolName.molar_heat,
+                                                symbolName.density,
+                                                symbolName.period
                                             )} my={'0.5rem'} textAlign='center'>
                                             <Box key={key.number}>{symbolName.name}</Box>
                                         </Button>
@@ -204,11 +238,38 @@ const ElementInfo = () => {
                                 height={'100%'}
                                 url={symbolName.video} />
                         </Box>
+                        {/* Description */}
                         <Box my={'1rem'}>
                             <Box>Description about the Element <span id="symbolname">{symbolName.name}</span></Box>
                             <br />
                             {symbolName.summary}
                         </Box>
+                        {/* Table */}
+                        <TableContainer>
+                            <Table variant='striped'>
+                                <Thead>
+                                    <Tr>
+                                        <Th>Melting Point</Th>
+                                        <Th>Boiling Point</Th>
+                                        <Th>Molar Heat</Th>
+                                        <Th>Density</Th>
+                                        <Th>Period</Th>
+                                    </Tr>
+                                </Thead>
+                                <Tbody>
+                                    <Tr>
+                                        <Td>{symbolName.melt}</Td>
+                                        <Td>{symbolName.boilingpoint}</Td>
+                                        <Td>{symbolName.molarheat}</Td>
+                                        <Td>{symbolName.density}</Td>
+                                        <Td>{symbolName.period}</Td>
+                                    </Tr>
+                                </Tbody>
+                            </Table>
+                            <a href="https://en.wikipedia.org/wiki/Hydrogen" target="_blank">
+                                <Button mx={'auto'} mt={'1em'}>Learn more</Button>
+                            </a>
+                        </TableContainer>
                     </Flex>
                 </GridItem>
 
