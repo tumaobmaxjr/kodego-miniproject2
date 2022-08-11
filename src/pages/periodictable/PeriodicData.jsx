@@ -1,6 +1,6 @@
 //page`1
 import data from './PeriodicTableJSON.json'
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./PeriodicTable.css";
 
 import {
@@ -79,6 +79,16 @@ function PeriodicData() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
+    // for input focus
+    // const inputRef = useRef();
+
+    // const clickForFocus = () =>{
+    //     inputRef.current.focus();
+    // }
+
+    
+    // onClick={clickForFocus}
+
     return (
 
         <>
@@ -104,6 +114,8 @@ function PeriodicData() {
 
                                 onChange={event => { setSearchName(event.target.value) }}
                                 onClick={event => { setSearchName(event.target.value = '') }}
+
+                                // ref={inputRef}
                             />
                             {data.elements.filter((val => {
                                 //if search name is empty it will retrun nothing
