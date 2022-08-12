@@ -2,19 +2,21 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import {
   Box,
-  Flex,
+  Flex, Grid, GridItem,
   HStack,
   IconButton,
   useDisclosure,
   useColorModeValue,
   useColorMode,
   Stack,
-  Container
+  Container,
+  Tabs, TabList, TabPanels, Tab, TabPanel
 } from '@chakra-ui/react';
 import { HamburgerIcon, SmallCloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from "react-bootstrap";
 
+import "../periodictable/PeriodicTable.css";
 
 export default function NavbarLayout() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,16 +40,16 @@ export default function NavbarLayout() {
             as={'nav'}
             spacing={5}
             display={{ base: 'none', md: 'flex' }}>
-              <LinkContainer to="/about">
-                <Nav.Link>
-                  About
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/contact">
-                <Nav.Link>
-                  Contact
-                </Nav.Link>
-              </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link>
+                About
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/contact">
+              <Nav.Link>
+                Contact
+              </Nav.Link>
+            </LinkContainer>
             <IconButton isRound='true' onClick={toggleColorMode}>
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </IconButton>
@@ -70,6 +72,48 @@ export default function NavbarLayout() {
           </Box>
         ) : null}
       </Container>
+      
+      <Grid
+                templateAreas={`"head head"
+                                "left right"`}
+                gridTemplateColumns={'3fr 1fr'}
+                mt={'1.5rem'}
+                mx={{ base: '3%', md: '5%',  lg: '6%'}}
+            >
+                <GridItem area={{ base: 'head', lg: 'left'}}>
+                <Box borderBottom={'0px'} id='lineRouting'>
+                    <Tabs colorScheme='teal' w={'auto'}>
+                      <TabList>
+                        <LinkContainer to="/" id="links">
+                          <Nav.Link>
+                            <Tab>
+                              Table
+                            </Tab>
+                          </Nav.Link>
+                        </LinkContainer>
+                        
+                        <LinkContainer to="/elementinfo" id="links">
+                          <Nav.Link>
+                            <Tab>
+                              List with properties
+                            </Tab>
+                          </Nav.Link>
+                        </LinkContainer>
+                        
+                        <LinkContainer to="/scienceblog" id="links">
+                          <Nav.Link>
+                            <Tab>
+                            Blogs
+                            </Tab>
+                          </Nav.Link>
+                        </LinkContainer>
+                        
+                      </TabList>
+                    </Tabs>
+                  </Box>
+                </GridItem>
+            </Grid>
+    
       <Container>
         <Outlet />
       </Container>

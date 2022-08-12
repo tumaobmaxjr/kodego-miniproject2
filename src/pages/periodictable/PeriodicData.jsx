@@ -2,7 +2,6 @@
 import data from './PeriodicTableJSON.json'
 import React, { useState, useRef } from 'react';
 import "./PeriodicTable.css";
-import LinkLayout from './LinkLayout';
 
 import {
     Box, Heading,
@@ -151,28 +150,19 @@ function PeriodicData() {
             </Modal>
 
             <Grid
-                templateAreas={`"smallhead smallhead"
-                                "smalltop smalltop" 
+                templateAreas={`"smalltop smalltop" 
                                 "omsim omsim"
                                 "topleft topright"
                                 "periodic-table periodic-info"
                                 "skir skir"`}
                 gridTemplateColumns={'3fr 1fr'}
                 mx={{ base: '0rem', lg: '3rem' }}
-                mt={'1.5rem'}
+                mt={{ base: '0.5rem', xl: '-2.5rem' }}
             >
-                {/* routing */}
-                <GridItem 
-                my={'auto'}
-                mb={"0.5rem"}
-                ms={{ base: '0%', xl: '4%' }}
-                area={{ base: 'smallhead', xl: 'topleft' }}>
-                    {/*for routing of pages  */}
-                    <LinkLayout />
-                </GridItem>
 
                 {/* search */}
-                <GridItem area={{ base: 'smalltop', xl: 'topright' }}>
+                <GridItem area={{ base: 'smalltop', xl: 'topright' }}
+                        mx={{ base: '3%', md: '4%',  lg: '6%'}}>
                     <Box mb={"1rem"}>
                         <Input
                             color='teal'
@@ -187,7 +177,7 @@ function PeriodicData() {
                 </GridItem>
 
                 {/* Table of elements */}
-                <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mx={'auto'}>
+                <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mb={'1rem'} mx={'auto'}>
                     <Box className="periodic-table" width={'100%'}>
                         {data.elements.map((element, key) => (
                             <button
@@ -216,7 +206,7 @@ function PeriodicData() {
                             >
                                 <strong id='sym'>{element.symbol}</strong>
 
-                                <Hide below='md'>
+                                <Hide below='lg'>
                                     <small className="number" display>{element.number}</small>
                                     <small className="name">{element.name}</small>
                                 </Hide>
@@ -227,7 +217,10 @@ function PeriodicData() {
                 </GridItem>
 
                 {/* Elements data side */}
-                <GridItem area={{ base: 'omsim', xl: 'periodic-info' }}>
+                <GridItem 
+                    area={{ base: 'omsim', xl: 'periodic-info' }}
+                    mx={{ base: '3%', md: '4%',  lg: '6%'}}
+                    mb={'1rem'}>
 
                     <Box minW={'20rem'} boxShadow='2xl' p={'1rem'} pt={'0rem'}>
 
