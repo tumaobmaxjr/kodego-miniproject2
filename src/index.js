@@ -2,6 +2,7 @@ import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Games from "./pages/periodictable/Games";
 import GetScienceBlogAPI from './pages/periodictable/GetScienceBlogAPI'
 import ElementInfo from './pages/periodictable/ElementInfo';
 import NavbarLayout from "./pages/components/NavbarLayout";
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="elementinfo" element={<ElementInfo />} />
             <Route path="scienceblog" element={<GetScienceBlogAPI />} />
+            <Route path="games" element={<Games />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         <Footer />
