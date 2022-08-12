@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ScienceBlog from "./ScienceBlog";
-import LinkLayout from "./LinkLayout";
+
 
 const GetScienceBlogAPI = () => {
 
@@ -20,10 +20,7 @@ const GetScienceBlogAPI = () => {
 
     return (
         <>
-             {/*for routing of pages  */}
-             <LinkLayout/>
-
-            <ScienceBlog data={data} header={"Top Science Blogs of the month!"} />
+            <ScienceBlog data={data} header={"BLOGS OF THE DAY!"} />
         </>
     );
 }

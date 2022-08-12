@@ -4,7 +4,6 @@ import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
 import { useEffect, useState, useRef } from "react";
 import "./PeriodicTable.css";
-import LinkLayout from './LinkLayout'
 
 import {
     GridItem, Grid,
@@ -168,25 +167,28 @@ const ElementInfo = () => {
                 </ModalContent>
             </Modal>
 
-             {/*for routing of pages  */}
-             <LinkLayout/>
-
-            <Center 
-            id="page-two-header" 
-            my={'2rem'} 
-            pb={{ base: '0.7em', md: '0' }} 
-            mx={{ base: '10%', md: '20%' }} 
-            fontSize={{ base: '1em', md: '1.5em' }}
-            fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Center>                
-            
             <Grid
-                templateAreas={`"omsim omsim"
+                templateAreas={`"smalltop smalltop"
+                                "omsim omsim"
                                 "element-info periodic-video"
                                 "skir skir"`}
                 gridTemplateColumns={'1fr 1fr'}
                 gap='1'
                 mx={'10%'}
             >
+                <GridItem area={{ base: 'smalltop', lg: 'smalltop' }} px={'1rem'}>
+
+                    <Center
+                        id="page-two-header"
+                        mb={'2rem'}
+                        pb={{ base: '0.7em', md: '0' }}
+                        mx={{ base: '2%', md: '20%' }}
+                        fontSize={{ base: '1.3em', md: '1.5em' }}
+                        fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK
+                    </Center>
+
+                </GridItem>
+
                 <GridItem area={{ base: 'skir', lg: 'element-info' }} px={'1rem'}>
 
                     <Flex id="elementChemgroup">
@@ -202,15 +204,15 @@ const ElementInfo = () => {
                                 <Button
                                     className="listOfElement"
                                     onClick={() => changeSymbolName(
-                                        item.name, 
-                                        item.summary, 
-                                        item.video, 
+                                        item.name,
+                                        item.summary,
+                                        item.video,
                                         item.melt,
                                         item.boil,
                                         item.molar_heat,
                                         item.density,
                                         item.period,
-                                        item.source,)}
+                                        item.source)}
                                     width={{ base: '2.5rem', md: tabledataWidth }}
                                     height={{ base: '2.5rem', md: tabledataHeight }}
                                     style={{
@@ -251,7 +253,7 @@ const ElementInfo = () => {
                             _placeholder={{ color: 'inherit' }}
                             size='md'
                             boxShadow='md'
-                            
+
                             onClick={onOpen}
                         />
 
