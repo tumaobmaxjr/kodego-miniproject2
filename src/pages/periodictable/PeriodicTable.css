@@ -108,3 +108,9 @@
 #symbolname{
   border-bottom: 2px solid teal;
 }
+
+#BlogTitle{
+  border-left: 5px solid teal;
+  padding-left: 5px;
+  font-weight: bold;
+}
