@@ -2,19 +2,14 @@ import PeriodicData from "./periodictable/PeriodicData";
 import ElementInfo from "./periodictable/ElementInfo"
 
 import {Center  } from '@chakra-ui/react'
+import GetScienceBlogAPI from "./periodictable/GetScienceBlogAPI";
 
 const Home = () => {
     return (
         <>
+            {/* <GetScienceBlogAPI/> */}
             <PeriodicData />
-            <Center 
-            id="page-two-header" 
-            my={'2rem'} 
-            pb={{ base: '0.7em', md: '0' }} 
-            mx={{ base: '10%', md: '20%' }} 
-            fontSize={{ base: '1em', md: '1.5em' }}
-            fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Center>
-            <ElementInfo/>
+            {/* <ElementInfo/> */}
         </>
     );
 }

@@ -4,6 +4,7 @@ import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
 import { useEffect, useState, useRef } from "react";
 import "./PeriodicTable.css";
+import LinkLayout from './LinkLayout'
 
 import {
     GridItem, Grid,
@@ -167,6 +168,17 @@ const ElementInfo = () => {
                 </ModalContent>
             </Modal>
 
+             {/*for routing of pages  */}
+             <LinkLayout/>
+
+            <Center 
+            id="page-two-header" 
+            my={'2rem'} 
+            pb={{ base: '0.7em', md: '0' }} 
+            mx={{ base: '10%', md: '20%' }} 
+            fontSize={{ base: '1em', md: '1.5em' }}
+            fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK</Center>                
+            
             <Grid
                 templateAreas={`"omsim omsim"
                                 "element-info periodic-video"
