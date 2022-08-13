@@ -11,7 +11,7 @@ const ScienceBlog = ({ data, header }) => {
                 <Center
                     id="page-two-header"
                     pb={{ base: '0.5em', md: '0' }}
-                    my={'1rem'}
+                    mb={'1rem'}
                     mx={{ base: '20%', md: '25%' }}
                     fontSize={{ base: '1.5em', md: '1.8em' }}
                     fontWeight={'bold'}>
@@ -49,7 +49,7 @@ const ScienceBlog = ({ data, header }) => {
                             src={datas.urlToImage}
                             alt='Picture about articles'
                         />
-                        <Text my={'1rem'}>Source: {datas.source.name}</Text>
+                        <Text>Source: {datas.source.name}</Text>
                     </Box>
                 ))}
             </Box>
