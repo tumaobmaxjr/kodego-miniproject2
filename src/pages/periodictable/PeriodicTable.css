@@ -116,6 +116,6 @@ border-bottom: 2px solid teal;
   font-weight: bold;
 }
 
-#lineRouting{
-  border-bottom: 0px solid teal;
+#button-stop:hover{
+  background-color: rgb(234, 107, 128);
 }

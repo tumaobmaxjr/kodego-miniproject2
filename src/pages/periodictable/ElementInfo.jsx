@@ -180,7 +180,7 @@ const ElementInfo = () => {
 
                     <Center
                         id="page-two-header"
-                        mb={'2rem'}
+                        my={'1rem'}
                         pb={{ base: '0.7em', md: '0' }}
                         mx={{ base: '2%', md: '20%' }}
                         fontSize={{ base: '1.3em', md: '1.5em' }}
