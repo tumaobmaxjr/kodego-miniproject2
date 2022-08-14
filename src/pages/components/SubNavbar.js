@@ -7,7 +7,6 @@ import {
 } from '@chakra-ui/react';
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from "react-bootstrap";
-import "../periodictable/PeriodicTable.css";
 
 export default function SubNavbar() {
 
@@ -24,7 +23,7 @@ export default function SubNavbar() {
           <Box>
             <Tabs colorScheme='teal' w={'auto'}>
               <TabList borderBottom={'0px'}>
-                <LinkContainer to="/home/periodicdata" id="links">
+                <LinkContainer to="/periodic-table" id="links">
                   <Nav.Link>
                     <Tab>
                       Table
@@ -32,7 +31,7 @@ export default function SubNavbar() {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/home/elementinfo" id="links">
+                <LinkContainer to="/element-info" id="links">
                   <Nav.Link>
                     <Tab>
                       List with properties
@@ -40,7 +39,7 @@ export default function SubNavbar() {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/home/scienceblog" id="links">
+                <LinkContainer to="/science-blog" id="links">
                   <Nav.Link>
                     <Tab>
                       Blogs
@@ -48,7 +47,7 @@ export default function SubNavbar() {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/home/games" id="links">
+                <LinkContainer to="/games" id="links">
                   <Nav.Link>
                     <Tab>
                       Games
