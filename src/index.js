@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Games from "./pages/periodictable/Games";
 import GetScienceBlogAPI from './pages/periodictable/GetScienceBlogAPI'
 import ElementInfo from './pages/periodictable/ElementInfo';
+import PeriodicData from './pages/periodictable/PeriodicData';
 import NavbarLayout from "./pages/components/NavbarLayout";
 import Footer from "./pages/components/Footer";
 import Home from "./pages/Home";
@@ -17,16 +18,18 @@ export default function App() {
     <ChakraProvider>
       <BrowserRouter>
         <NavbarLayout />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="home" element={<Home />} >
+            <Route path="periodicdata" element={<PeriodicData />} />
             <Route path="elementinfo" element={<ElementInfo />} />
             <Route path="scienceblog" element={<GetScienceBlogAPI />} />
             <Route path="games" element={<Games />} />
-            <Route path="*" element={<NoPage />} />
-          </Routes>
+          </Route>
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
         <Footer />
       </BrowserRouter>
     </ChakraProvider>
@@ -35,5 +38,3 @@ export default function App() {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
-
-//hello
