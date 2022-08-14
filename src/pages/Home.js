@@ -1,4 +1,4 @@
-import PeriodicData from "./periodictable/PeriodicData";
+import PeriodicTable from "./periodictable/PeriodicTable";
 import ElementInfo from "./periodictable/ElementInfo";
 import SubNavbar from "./components/SubNavbar";
 

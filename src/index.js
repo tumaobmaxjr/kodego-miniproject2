@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Games from "./pages/periodictable/Games";
 import GetScienceBlogAPI from './pages/periodictable/GetScienceBlogAPI'
 import ElementInfo from './pages/periodictable/ElementInfo';
-import PeriodicData from './pages/periodictable/PeriodicData';
+import PeriodicTable from './pages/periodictable/PeriodicTable';
 import NavbarLayout from "./pages/components/NavbarLayout";
 import Footer from "./pages/components/Footer";
 import Home from "./pages/Home";
@@ -19,11 +19,11 @@ export default function App() {
       <BrowserRouter>
         <NavbarLayout />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home />} >
-            <Route path="periodicdata" element={<PeriodicData />} />
-            <Route path="elementinfo" element={<ElementInfo />} />
-            <Route path="scienceblog" element={<GetScienceBlogAPI />} />
+          <Route path="/" element={<Home />} >
+          {/* <Route index element={<Home />} > */}
+            <Route path="periodic-table" element={<PeriodicTable />} />
+            <Route path="element-info" element={<ElementInfo />} />
+            <Route path="science-blog" element={<GetScienceBlogAPI />} />
             <Route path="games" element={<Games />} />
           </Route>
           <Route path="about" element={<About />} />
