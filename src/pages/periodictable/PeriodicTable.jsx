@@ -43,17 +43,21 @@ function PeriodicData() {
 
         image: 'https://storage.googleapis.com/search-ar-edu/periodic-table/element_001_hydrogen/element_001_hydrogen_srp_th.png',
 
-        symbol: 'H',
-        discovered_by: 'Henry Cavendish',
         number: 1,
+        category: "diatomic nonmetal",
+        symbol: 'H',
         phase: "Gas",
+        atomic_mass: 1.008,
+        density: 0.08988,
+        melt: 13.99,
+        boil: 20.721,
+        discovered_by: 'Henry Cavendish',
 
         xpos: 1,
         ypos: 1,
-        category: "diatomic nonmetal",
     });
 
-    const changeName = (name, summ, img, sym, discby, num, ph, x, y, cat) => {
+    const changeName = (name, summ, img, num, cat, sym, ph, atommass, dens, melting, boiling, discby, x, y,) => {
         setElementName(previousState => {
             return {
                 name: name,
@@ -61,14 +65,18 @@ function PeriodicData() {
 
                 image: img,
 
-                symbol: sym,
-                discovered_by: discby,
                 number: num,
+                category: cat,
+                symbol: sym,
                 phase: ph,
-
+                atomic_mass: atommass,
+                density: dens,
+                melt: melting,
+                boil: boiling,
+                discovered_by: discby,
+                
                 xpos: x,
                 ypos: y,
-                category: cat,
             }
         });
         // i was amazed that it is possible to add multiple setState in a function
@@ -119,23 +127,29 @@ function PeriodicData() {
                                 if (searchName === "") {
                                     return ('')
                                 } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.bohr_model_image, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
+                                    return (val.name, val.summary, val.bohr_model_image, val.number, val.category, val.symbol, val.phase, val.atomic_mass, val.density, val.melt, val.boil, val.discovered_by, val.xpos, val.ypos, val['cpk-hex'])
                                 }
                             })).map((symbolName, key) => {
                                 return (
                                     //wrapper button
                                     <Button onClick={onClose} id='wrapper-button'>
                                         <Button onClick={() => changeName
-                                            (symbolName.name,
+                                            (
+                                                symbolName.name,
                                                 symbolName.summary,
                                                 symbolName.bohr_model_image,
-                                                symbolName.symbol,
-                                                symbolName.discovered_by,
                                                 symbolName.number,
+                                                symbolName.category,
+                                                symbolName.symbol,
                                                 symbolName.phase,
+                                                symbolName.atomic_mass,
+                                                symbolName.dens,
+                                                symbolName.melt,
+                                                symbolName.boil,
+                                                symbolName.discovered_by,
                                                 symbolName.xpos,
                                                 symbolName.ypos,
-                                                symbolName.category,
+                                                
                                             )}
                                             my={'0.5rem'} textAlign='center'>
                                             <Box key={key.number}>{symbolName.name}</Box>
@@ -182,16 +196,22 @@ function PeriodicData() {
                         {data.elements.map((element, key) => (
                             <button
                                 onClick={() => changeName
-                                    (element.name,
+                                    (
+                                        element.name,
                                         element.summary,
                                         element.bohr_model_image,
-                                        element.symbol,
-                                        element.discovered_by,
                                         element.number,
+                                        element.category,
+                                        element.symbol,
                                         element.phase,
+                                        element.atomic_mass,
+                                        element.density,
+                                        element.melt,
+                                        element.boil,
+                                        element.discovered_by,
                                         element.xpos,
                                         element.ypos,
-                                        element.category,
+                                        
                                     )}
                                 className="element"
                                 key={key}
@@ -220,25 +240,26 @@ function PeriodicData() {
                 <GridItem 
                     area={{ base: 'omsim', xl: 'periodic-info' }}
                     mx={{ base: '3%', md: '4%',  lg: '6%'}}
-                    mb={'1rem'}>
+                    mb={'4rem'}>
 
                     <Box minW={'20rem'} boxShadow='2xl' p={'1rem'} pt={'0rem'}>
 
                         {/* Element name and short description */}
-                        <Badge fontSize={{ base: '0.7em', lg: '1.2em' }}>{elementName.name}</Badge>
+                        <Badge mt={4} fontSize={{ base: '0.7em', lg: '1.2em' }}>{elementName.name} ({elementName.symbol}) {elementName.number}</Badge>
+                        <Box>{elementName.category}</Box>
 
                         <Box marginY='1.5rem'>{elementName.summary}</Box>
 
                         {/* Picture and details */}
-
-                        <Box mb={'0.5rem'}>Bohr Model Image</Box>
-
                         <Image src={elementName.image} alt='Sample' />
-                        <br />
-                        <Box> Discovered by:  {elementName.discovered_by}</Box>
-                        <Box> Number:  {elementName.number}</Box>
-                        <Box> Symbol:  {elementName.symbol}</Box>
+                        <Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box>                        
+
                         <Box> Phase:  {elementName.phase}</Box>
+                        <Box> Atomic mass:  {elementName.atomic_mass}</Box>
+                        <Box> Density:  {elementName.density}</Box>
+                        <Box> Melting:  {elementName.melt}</Box>
+                        <Box> Boiling:  {elementName.boil}</Box>
+                        <Box> Discovered by: {elementName.discovered_by} </Box>
 
                     </Box>
 
