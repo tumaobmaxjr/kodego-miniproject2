@@ -41,7 +41,7 @@ function PeriodicData() {
         name: 'Hydrogen',
         summary: 'Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.00794 u, hydrogen is the lightest element on the periodic table. Its monatomic form (H) is the most abundant chemical substance in the Universe, constituting roughly 75% of all baryonic mass.',
 
-        image: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Hydrogen_Spectra.jpg',
+        image: 'https://storage.googleapis.com/search-ar-edu/periodic-table/element_001_hydrogen/element_001_hydrogen_srp_th.png',
 
         symbol: 'H',
         discovered_by: 'Henry Cavendish',
@@ -119,7 +119,7 @@ function PeriodicData() {
                                 if (searchName === "") {
                                     return ('')
                                 } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.spectral_img, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
+                                    return (val.name, val.summary, val.bohr_model_image, val.symbol, val.discovered_by, val.number, val.phase, val.xpos, val.ypos, val.category, val['cpk-hex'])
                                 }
                             })).map((symbolName, key) => {
                                 return (
@@ -128,7 +128,7 @@ function PeriodicData() {
                                         <Button onClick={() => changeName
                                             (symbolName.name,
                                                 symbolName.summary,
-                                                symbolName.spectral_img,
+                                                symbolName.bohr_model_image,
                                                 symbolName.symbol,
                                                 symbolName.discovered_by,
                                                 symbolName.number,
@@ -184,7 +184,7 @@ function PeriodicData() {
                                 onClick={() => changeName
                                     (element.name,
                                         element.summary,
-                                        element.spectral_img,
+                                        element.bohr_model_image,
                                         element.symbol,
                                         element.discovered_by,
                                         element.number,
@@ -231,7 +231,7 @@ function PeriodicData() {
 
                         {/* Picture and details */}
 
-                        <Box mb={'0.5rem'}>Spectral Image</Box>
+                        <Box mb={'0.5rem'}>Bohr Model Image</Box>
 
                         <Image src={elementName.image} alt='Sample' />
                         <br />
