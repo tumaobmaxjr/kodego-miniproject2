@@ -49,7 +49,7 @@ const ScienceBlog = ({ data, header }) => {
                             src={datas.urlToImage}
                             alt='Picture about articles'
                         />
-                        <Text>Source: {datas.source.name}</Text>
+                        <Text my={'2'}>Source: {datas.source.name}</Text>
                     </Box>
                 ))}
             </Box>
