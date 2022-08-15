@@ -1,6 +1,6 @@
 import { ButtonGroup, Container, IconButton, Stack, Text, Divider, } from '@chakra-ui/react'
 import * as React from 'react'
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -13,12 +13,13 @@ function Footer() {
         align="center"
       >
         <Text fontSize="sm" color="subtle">
-          &copy; {new Date().getFullYear()} Name of the Website, Inc. All rights reserved.
+          {/* &copy; {new Date().getFullYear()} Name of the Website, Inc. All rights reserved. */}
+          Made with ❤️ by Max and Michael
         </Text>
         <ButtonGroup variant="ghost">
-          <IconButton as="a" href="#" isRound='true' aria-label="Facebook" icon={<FaFacebook fontSize="1.25rem" />}/>
-          <IconButton as="a" href="#" isRound='true' aria-label="Instagram" icon={<FaInstagram fontSize="1.25rem" />} />
+          <IconButton as="a" href="https://github.com/tumaobmaxjr/kodego-miniproject2" isRound='true' aria-label="Github" icon={<FaGithub fontSize="1.25rem" />}/>
           <IconButton as="a" href="#" isRound='true' aria-label="Twitter" icon={<FaTwitter fontSize="1.25rem" />} />
+          <IconButton as="a" href="#" isRound='true' aria-label="Instagram" icon={<FaInstagram fontSize="1.25rem" />} />
         </ButtonGroup>
       </Stack>
     </Container>
