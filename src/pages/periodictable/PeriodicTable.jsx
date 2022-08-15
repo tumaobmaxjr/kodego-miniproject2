@@ -20,6 +20,7 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
+    Center,
 } from "@chakra-ui/react"
 
 const colorMap = {
@@ -251,7 +252,7 @@ function PeriodicData() {
                         <Box marginY='1.5rem'>{elementName.summary}</Box>
 
                         {/* Picture and details */}
-                        <Image src={elementName.image} alt='Sample' />
+                        <Center><Image src={elementName.image} alt='Sample' /></Center>
                         <Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box>                        
 
                         <Box> Phase:  {elementName.phase}</Box>
