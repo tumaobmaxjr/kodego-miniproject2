@@ -1,7 +1,8 @@
 //page`1
 import data from './PeriodicTableJSON.json'
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./PeriodicTable.css";
+import { Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
 
 import {
     Box, Heading,
@@ -35,6 +36,17 @@ const colorMap = {
 };
 
 function PeriodicData() {
+
+    const [loading, setLoading] = useState(true);
+    const [content, setContent] = useState(false);
+
+    // minus the score continously
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+            setContent(true);
+        }, 200);
+    }, []);
 
     const [searchName, setSearchName] = useState('');
 
@@ -75,7 +87,7 @@ function PeriodicData() {
                 melt: melting,
                 boil: boiling,
                 discovered_by: discby,
-                
+
                 xpos: x,
                 ypos: y,
             }
@@ -98,175 +110,190 @@ function PeriodicData() {
     return (
 
         <>
+            {loading &&
+                <Stack mx={'10%'} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='250px'>
+                        Please wait.. little einstein
+                    </Skeleton>
+                    <Skeleton height='50px' />
+                </Stack>
+            }
 
-            <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
-                {/* <ModalOverlay /> */}
-                <ModalOverlay
-                    backdropFilter='blur(10px) hue-rotate(5deg)'
-                    backdropInvert='80%'
-                    backdropBlur='2px'
-                />
-                <ModalContent>
-                    <ModalHeader>Search Element Name</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={'1rem'}>
-                        <Box>
-                            <Input
-                                color='teal'
-                                placeholder='Search Element'
-                                _placeholder={{ color: 'inherit' }}
-                                size='md'
-                                boxShadow='md'
+            {content &&
+                <>
+                    <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
+                        {/* <ModalOverlay /> */}
+                        <ModalOverlay
+                            backdropFilter='blur(10px) hue-rotate(5deg)'
+                            backdropInvert='80%'
+                            backdropBlur='2px'
+                        />
+                        <ModalContent>
+                            <ModalHeader>Search Element Name</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody pb={'1rem'}>
+                                <Box>
+                                    <Input
+                                        color='teal'
+                                        placeholder='Search Element'
+                                        _placeholder={{ color: 'inherit' }}
+                                        size='md'
+                                        boxShadow='md'
 
-                                onChange={event => { setSearchName(event.target.value) }}
-                                onClick={event => { setSearchName(event.target.value = '') }}
-                                // ref={inputRef}
+                                        onChange={event => { setSearchName(event.target.value) }}
+                                        onClick={event => { setSearchName(event.target.value = '') }}
+                                    // ref={inputRef}
 
-                            />
-                            {data.elements.filter((val => {
-                                //if search name is empty it will retrun nothing
-                                if (searchName === "") {
-                                    return ('')
-                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (val.name, val.summary, val.bohr_model_image, val.number, val.category, val.symbol, val.phase, val.atomic_mass, val.density, val.melt, val.boil, val.discovered_by, val.xpos, val.ypos, val['cpk-hex'])
-                                }
-                            })).map((symbolName, key) => {
-                                return (
-                                    //wrapper button
-                                    <Button onClick={onClose} id='wrapper-button'>
-                                        <Button onClick={() => changeName
-                                            (
-                                                symbolName.name,
-                                                symbolName.summary,
-                                                symbolName.bohr_model_image,
-                                                symbolName.number,
-                                                symbolName.category,
-                                                symbolName.symbol,
-                                                symbolName.phase,
-                                                symbolName.atomic_mass,
-                                                symbolName.dens,
-                                                symbolName.melt,
-                                                symbolName.boil,
-                                                symbolName.discovered_by,
-                                                symbolName.xpos,
-                                                symbolName.ypos,
-                                                
-                                            )}
-                                            my={'0.5rem'} textAlign='center'>
-                                            <Box key={key.number}>{symbolName.name}</Box>
-                                        </Button>
-                                    </Button>
-                                )
-                            }
-                            )}
-                        </Box>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+                                    />
+                                    {data.elements.filter((val => {
+                                        //if search name is empty it will retrun nothing
+                                        if (searchName === "") {
+                                            return ('')
+                                        } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                            return (val.name, val.summary, val.bohr_model_image, val.number, val.category, val.symbol, val.phase, val.atomic_mass, val.density, val.melt, val.boil, val.discovered_by, val.xpos, val.ypos, val['cpk-hex'])
+                                        }
+                                    })).map((symbolName, key) => {
+                                        return (
+                                            //wrapper button
+                                            <Button onClick={onClose} id='wrapper-button'>
+                                                <Button onClick={() => changeName
+                                                    (
+                                                        symbolName.name,
+                                                        symbolName.summary,
+                                                        symbolName.bohr_model_image,
+                                                        symbolName.number,
+                                                        symbolName.category,
+                                                        symbolName.symbol,
+                                                        symbolName.phase,
+                                                        symbolName.atomic_mass,
+                                                        symbolName.dens,
+                                                        symbolName.melt,
+                                                        symbolName.boil,
+                                                        symbolName.discovered_by,
+                                                        symbolName.xpos,
+                                                        symbolName.ypos,
 
-            <Grid
-                templateAreas={`"smalltop smalltop" 
+                                                    )}
+                                                    my={'0.5rem'} textAlign='center'>
+                                                    <Box key={key.number}>{symbolName.name}</Box>
+                                                </Button>
+                                            </Button>
+                                        )
+                                    }
+                                    )}
+                                </Box>
+                            </ModalBody>
+                        </ModalContent>
+                    </Modal>
+
+                    <Grid
+                        templateAreas={`"smalltop smalltop" 
                                 "omsim omsim"
                                 "topleft topright"
                                 "periodic-table periodic-info"
                                 "skir skir"`}
-                gridTemplateColumns={'3fr 1fr'}
-                mx={{ base: '0rem', lg: '3rem' }}
-                mt={{ base: '0.5rem', xl: '-2.5rem' }}
-            >
+                        gridTemplateColumns={'3fr 1fr'}
+                        mx={{ base: '0rem', lg: '3rem' }}
+                        mt={{ base: '0.5rem', xl: '-2.5rem' }}
+                    >
 
-                {/* search */}
-                <GridItem area={{ base: 'smalltop', xl: 'topright' }}
-                        mx={{ base: '3%', md: '4%',  lg: '6%'}}>
-                    <Box mb={"1rem"}>
-                        <Input
-                            color='teal'
-                            placeholder='Search Element'
-                            _placeholder={{ color: 'inherit' }}
-                            size='md'
-                            boxShadow='md'
+                        {/* search */}
+                        <GridItem area={{ base: 'smalltop', xl: 'topright' }}
+                            mx={{ base: '3%', md: '4%', lg: '6%' }}
+                            mt={{base:'1rem', xl: '0'}}>
+                            <Box mb={"1rem"}>
+                                <Input
+                                    color='teal'
+                                    placeholder='Search Element'
+                                    _placeholder={{ color: 'inherit' }}
+                                    size='md'
+                                    boxShadow='md'
 
-                            onClick={onOpen}
-                        />
-                    </Box>
-                </GridItem>
+                                    onClick={onOpen}
+                                />
+                            </Box>
+                        </GridItem>
 
-                {/* Table of elements */}
-                <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mb={'1rem'} mx={'auto'}>
-                    <Box className="periodic-table" width={'100%'}>
-                        {data.elements.map((element, key) => (
-                            <button
-                                onClick={() => changeName
-                                    (
-                                        element.name,
-                                        element.summary,
-                                        element.bohr_model_image,
-                                        element.number,
-                                        element.category,
-                                        element.symbol,
-                                        element.phase,
-                                        element.atomic_mass,
-                                        element.density,
-                                        element.melt,
-                                        element.boil,
-                                        element.discovered_by,
-                                        element.xpos,
-                                        element.ypos,
-                                        
-                                    )}
-                                className="element"
-                                key={key}
+                        {/* Table of elements */}
+                        <GridItem area={{ base: 'skir', xl: 'periodic-table' }} mb={'1rem'} mx={'auto'}>
+                            <Box className="periodic-table" width={'100%'}>
+                                {data.elements.map((element, key) => (
+                                    <button
+                                        onClick={() => changeName
+                                            (
+                                                element.name,
+                                                element.summary,
+                                                element.bohr_model_image,
+                                                element.number,
+                                                element.category,
+                                                element.symbol,
+                                                element.phase,
+                                                element.atomic_mass,
+                                                element.density,
+                                                element.melt,
+                                                element.boil,
+                                                element.discovered_by,
+                                                element.xpos,
+                                                element.ypos,
 
-                                style={{
-                                    gridRow: element.ypos,
-                                    gridColumn: element.xpos,
-                                    borderColor: 'black',
-                                    color: 'black',
-                                    backgroundColor: '#' + element['cpk-hex']
-                                }}
-                            >
-                                <strong id='sym'>{element.symbol}</strong>
+                                            )}
+                                        className="element"
+                                        key={key}
 
-                                <Hide below='lg'>
-                                    <small className="number" display>{element.number}</small>
-                                    <small className="name">{element.name}</small>
-                                </Hide>
+                                        style={{
+                                            gridRow: element.ypos,
+                                            gridColumn: element.xpos,
+                                            borderColor: 'black',
+                                            color: 'black',
+                                            backgroundColor: '#' + element['cpk-hex']
+                                        }}
+                                    >
+                                        <strong id='sym'>{element.symbol}</strong>
 
-                            </button>
-                        ))}
-                    </Box>
-                </GridItem>
+                                        <Hide below='lg'>
+                                            <small className="number" display>{element.number}</small>
+                                            <small className="name">{element.name}</small>
+                                        </Hide>
 
-                {/* Elements data side */}
-                <GridItem 
-                    area={{ base: 'omsim', xl: 'periodic-info' }}
-                    mx={{ base: '3%', md: '4%',  lg: '6%'}}
-                    mb={'4rem'}>
+                                    </button>
+                                ))}
+                            </Box>
+                        </GridItem>
 
-                    <Box minW={'20rem'} boxShadow='2xl' p={'1rem'} pt={'0rem'}>
+                        {/* Elements data side */}
+                        <GridItem
+                            area={{ base: 'omsim', xl: 'periodic-info' }}
+                            mb={'4rem'}>
 
-                        {/* Element name and short description */}
-                        <Badge mt={4} fontSize={{ base: '0.7em', lg: '1.2em' }}>{elementName.name} ({elementName.symbol}) {elementName.number}</Badge>
-                        <Box>{elementName.category}</Box>
+                            <Box minW={'20rem'} boxShadow='2xl' p={'1rem'} pt={'0rem'}>
 
-                        <Box marginY='1.5rem'>{elementName.summary}</Box>
+                                {/* Element name and short description */}
+                                <Badge mt={4} fontSize={{ base: '1em',  md: '1.1em', lg: '1.2em' }}>{elementName.name} ({elementName.symbol}) {elementName.number}</Badge>
+                                <Box>{elementName.category}</Box>
 
-                        {/* Picture and details */}
-                        <Center><Image src={elementName.image} alt='Sample' /></Center>
-                        <Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box>                        
+                                <Box marginY='1.5rem'>{elementName.summary}</Box>
 
-                        <Box> Phase:  {elementName.phase}</Box>
-                        <Box> Atomic mass:  {elementName.atomic_mass}</Box>
-                        <Box> Density:  {elementName.density}</Box>
-                        <Box> Melting:  {elementName.melt}</Box>
-                        <Box> Boiling:  {elementName.boil}</Box>
-                        <Box> Discovered by: {elementName.discovered_by} </Box>
+                                {/* Picture and details */}
+                                <Center><Image src={elementName.image} alt='Sample' /></Center>
+                                <Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box>
 
-                    </Box>
+                                <Box> Phase:  {elementName.phase}</Box>
+                                <Box> Atomic mass:  {elementName.atomic_mass}</Box>
+                                <Box> Density:  {elementName.density}</Box>
+                                <Box> Melting:  {elementName.melt}</Box>
+                                <Box> Boiling:  {elementName.boil}</Box>
+                                <Box> Discovered by: {elementName.discovered_by} </Box>
 
-                </GridItem>
-            </Grid>
+                            </Box>
 
+                        </GridItem>
+                    </Grid>
+                </>
+            }
 
 
         </>

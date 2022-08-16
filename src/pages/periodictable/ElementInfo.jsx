@@ -4,6 +4,7 @@ import data from './PeriodicTableJSON.json'
 import ReactPlayer from 'react-player'
 import { useEffect, useState, useRef } from "react";
 import "./PeriodicTable.css";
+import { Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
 
 import {
     GridItem, Grid,
@@ -37,6 +38,17 @@ const symbolElementSize = "1.5em";
 const elementNameSize = "1.3em";
 
 const ElementInfo = () => {
+
+    const [loading, setLoading] = useState(true);
+    const [content, setContent] = useState(false);
+
+    // minus the score continously
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+            setContent(true);
+        }, 200);
+    }, []);
 
     const [searchName, setSearchName] = useState('');
 
@@ -98,208 +110,223 @@ const ElementInfo = () => {
 
     return (
         <>
+            {loading &&
+                <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='50px' />
+                    <Skeleton height='250px'>
+                        Please wait.. little einstein
+                    </Skeleton>
+                    <Skeleton height='50px' />
+                </Stack>
+            }
 
-            <Modal
-                top={'70%'}
-                isOpen={isOpen}
-                onClose={onClose}
-                scrollBehavior={scrollBehavior}
-                motionPreset='slideInBottom'>
-                {/* <ModalOverlay /> */}
-                <ModalOverlay
-                    backdropFilter='blur(10px) hue-rotate(5deg)'
-                    backdropInvert='80%'
-                    backdropBlur='2px'
-                />
-                <ModalContent>
-                    <ModalHeader>Search Element Name</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={'1rem'}>
-                        <Box>
-                            <Input color='teal'
+            {content &&
+            <>
+                <Modal
+                    top={'70%'}
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    scrollBehavior={scrollBehavior}
+                    motionPreset='slideInBottom'>
+                    {/* <ModalOverlay /> */}
+                    <ModalOverlay
+                        backdropFilter='blur(10px) hue-rotate(5deg)'
+                        backdropInvert='80%'
+                        backdropBlur='2px'
+                    />
+                    <ModalContent>
+                        <ModalHeader>Search Element Name</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody pb={'1rem'}>
+                            <Box>
+                                <Input color='teal'
+                                    placeholder='Search Element'
+                                    _placeholder={{ color: 'inherit' }}
+                                    size='md'
+                                    boxShadow='md'
+
+                                    onChange={event => { setSearchName(event.target.value) }}
+                                    onClick={event => { setSearchName(event.target.value = '') }}
+                                />
+                                {data.elements.filter((val => {
+                                    //if search name is empty it will retrun nothing
+                                    if (searchName == "") {
+                                        return ('')
+                                    } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                                        return (
+                                            val.name,
+                                            val.summary,
+                                            val.category,
+                                            val.video,
+                                            val.melt,
+                                            val.boil,
+                                            val.molar_heat,
+                                            val.density,
+                                            val.period,
+                                            val.source)
+                                    }
+                                })).map((symbolName, key) => {
+                                    return (
+                                        <Button onClick={onClose} id='wrapper-button'>
+                                            <Button onClick={() => changeSymbolName
+                                                (symbolName.name,
+                                                    symbolName.summary,
+                                                    symbolName.video,
+                                                    symbolName.melt,
+                                                    symbolName.boil,
+                                                    symbolName.molar_heat,
+                                                    symbolName.density,
+                                                    symbolName.period,
+                                                    symbolName.source,
+                                                )} my={'0.5rem'} textAlign='center'>
+                                                <Box key={key.number}>{symbolName.name}</Box>
+                                            </Button>
+                                        </Button>
+                                    )
+                                }
+                                )}
+                            </Box>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
+
+                <Grid
+                    templateAreas={`"smalltop smalltop"
+                                "omsim omsim"
+                                "element-info periodic-video"
+                                "skir skir"`}
+                    gridTemplateColumns={'1fr 1fr'}
+                    gap='1'
+                    mx={'10%'}
+                >
+                    <GridItem area={{ base: 'smalltop', lg: 'smalltop' }} px={'1rem'}>
+
+                        <Center
+                            id="page-two-header"
+                            my={'1rem'}
+                            pb={{ base: '0.7em', md: '0' }}
+                            mx={{ base: '2%', md: '20%' }}
+                            fontSize={{ base: '1.3em', md: '1.5em' }}
+                            fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK
+                        </Center>
+
+                    </GridItem>
+
+                    <GridItem area={{ base: 'skir', lg: 'element-info' }} px={'1rem'}>
+
+                        <Flex id="elementChemgroup">
+                            <Box fontWeight={'semibold'}>Element Name</Box>
+                            <Spacer />
+                            <Box fontWeight={'semibold'}>Group Block</Box>
+                        </Flex>
+
+                        {/* Button */}
+                        <div id="elementsTableData">
+                            {data.elements.map((item) => (
+                                <Flex my={"2rem"} className="asideContent" key={item.atomicNumber}>
+                                    <Button
+                                        className="listOfElement"
+                                        onClick={() => changeSymbolName(
+                                            item.name,
+                                            item.summary,
+                                            item.video,
+                                            item.melt,
+                                            item.boil,
+                                            item.molar_heat,
+                                            item.density,
+                                            item.period,
+                                            item.source)}
+                                        width={{ base: '2.5rem', md: tabledataWidth }}
+                                        height={{ base: '2.5rem', md: tabledataHeight }}
+                                        style={{
+                                            // width: tabledataWidth,
+                                            // height: tabledataHeight,
+                                            textAlign: "center",
+                                            border: "1px solid black",
+                                            color: 'black',
+                                            backgroundColor: '#' + item['cpk-hex'],
+                                            flexDirection: 'column'
+                                        }}
+                                    >
+                                        <Box fontSize={atomicNumberSize}>{item.number}</Box>
+                                        <Box fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
+                                    </Button>
+
+                                    <Box my={"auto"} mx={"1rem"}>
+                                        <Box fontSize={{ base: '1em', md: elementNameSize }}>{item.name}</Box>
+                                    </Box>
+
+                                    <Spacer />
+
+                                    <Box my={"auto"}>
+                                        <Box style={{ textAlign: 'right' }} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
+                                    </Box>
+                                </Flex>
+                            ))}
+                        </div>
+                    </GridItem>
+
+                    {/* Video */}
+                    <GridItem area={{ base: 'omsim', lg: 'periodic-video' }}>
+                        <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
+
+                            <Input
+                                color='teal'
                                 placeholder='Search Element'
                                 _placeholder={{ color: 'inherit' }}
                                 size='md'
                                 boxShadow='md'
 
-                                onChange={event => { setSearchName(event.target.value) }}
-                                onClick={event => { setSearchName(event.target.value = '') }}
+                                onClick={onOpen}
                             />
-                            {data.elements.filter((val => {
-                                //if search name is empty it will retrun nothing
-                                if (searchName == "") {
-                                    return ('')
-                                } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
-                                    return (
-                                        val.name,
-                                        val.summary,
-                                        val.category,
-                                        val.video,
-                                        val.melt,
-                                        val.boil,
-                                        val.molar_heat,
-                                        val.density,
-                                        val.period,
-                                        val.source)
-                                }
-                            })).map((symbolName, key) => {
-                                return (
-                                    <Button onClick={onClose} id='wrapper-button'>
-                                        <Button onClick={() => changeSymbolName
-                                            (symbolName.name,
-                                                symbolName.summary,
-                                                symbolName.video,
-                                                symbolName.melt,
-                                                symbolName.boil,
-                                                symbolName.molar_heat,
-                                                symbolName.density,
-                                                symbolName.period,
-                                                symbolName.source,
-                                            )} my={'0.5rem'} textAlign='center'>
-                                            <Box key={key.number}>{symbolName.name}</Box>
-                                        </Button>
-                                    </Button>
-                                )
-                            }
-                            )}
-                        </Box>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
 
-            <Grid
-                templateAreas={`"smalltop smalltop"
-                                "omsim omsim"
-                                "element-info periodic-video"
-                                "skir skir"`}
-                gridTemplateColumns={'1fr 1fr'}
-                gap='1'
-                mx={'10%'}
-            >
-                <GridItem area={{ base: 'smalltop', lg: 'smalltop' }} px={'1rem'}>
+                            <Box width={'100%'} height={'20rem'} backgroundColor={'gray.200'} my={'1rem'} mx={'auto'}>
+                                <ReactPlayer
+                                    controls
+                                    width={'100%'}
+                                    height={'100%'}
+                                    url={symbolName.video} />
+                            </Box>
+                            {/* Description */}
+                            <Box my={'1rem'}>
+                                <Box>Description about the Element <span id="symbolname"><a href={symbolName.source} target="_blank">{symbolName.name}</a></span></Box>
+                                <br />
+                                {symbolName.summary}
+                            </Box>
+                            {/* Table */}
+                            <TableContainer>
+                                <Table variant='striped'>
+                                    <Thead>
+                                        <Tr>
+                                            <Th>Melting Point</Th>
+                                            <Th>Boiling Point</Th>
+                                            <Th>Molar Heat</Th>
+                                            <Th>Density</Th>
+                                            <Th>Period</Th>
+                                        </Tr>
+                                    </Thead>
+                                    <Tbody>
+                                        <Tr>
+                                            <Td>{symbolName.melt}</Td>
+                                            <Td>{symbolName.boilingpoint}</Td>
+                                            <Td>{symbolName.molarheat}</Td>
+                                            <Td>{symbolName.density}</Td>
+                                            <Td>{symbolName.period}</Td>
+                                        </Tr>
+                                    </Tbody>
+                                </Table>
+                                <a href={symbolName.source} target="_blank">
+                                    <Button mx={'auto'} mt={'1em'}>Learn more</Button>
+                                </a>
+                            </TableContainer>
+                        </Flex>
+                    </GridItem>
 
-                    <Center
-                        id="page-two-header"
-                        my={'1rem'}
-                        pb={{ base: '0.7em', md: '0' }}
-                        mx={{ base: '2%', md: '20%' }}
-                        fontSize={{ base: '1.3em', md: '1.5em' }}
-                        fontWeight={'bold'} >LIST OF GROUP ELEMENTS WITH CHEMICAL GROUP BLOCK
-                    </Center>
-
-                </GridItem>
-
-                <GridItem area={{ base: 'skir', lg: 'element-info' }} px={'1rem'}>
-
-                    <Flex id="elementChemgroup">
-                        <Box fontWeight={'semibold'}>Element Name</Box>
-                        <Spacer />
-                        <Box fontWeight={'semibold'}>Group Block</Box>
-                    </Flex>
-
-                    {/* Button */}
-                    <div id="elementsTableData">
-                        {data.elements.map((item) => (
-                            <Flex my={"2rem"} className="asideContent" key={item.atomicNumber}>
-                                <Button
-                                    className="listOfElement"
-                                    onClick={() => changeSymbolName(
-                                        item.name,
-                                        item.summary,
-                                        item.video,
-                                        item.melt,
-                                        item.boil,
-                                        item.molar_heat,
-                                        item.density,
-                                        item.period,
-                                        item.source)}
-                                    width={{ base: '2.5rem', md: tabledataWidth }}
-                                    height={{ base: '2.5rem', md: tabledataHeight }}
-                                    style={{
-                                        // width: tabledataWidth,
-                                        // height: tabledataHeight,
-                                        textAlign: "center",
-                                        border: "1px solid black",
-                                        color: 'black',
-                                        backgroundColor: '#' + item['cpk-hex'],
-                                        flexDirection: 'column'
-                                    }}
-                                >
-                                    <Box fontSize={atomicNumberSize}>{item.number}</Box>
-                                    <Box fontSize={{ base: '1em', md: symbolElementSize }}>{item.symbol}</Box>
-                                </Button>
-
-                                <Box my={"auto"} mx={"1rem"}>
-                                    <Box fontSize={{ base: '1em', md: elementNameSize }}>{item.name}</Box>
-                                </Box>
-
-                                <Spacer />
-
-                                <Box my={"auto"}>
-                                    <Box style={{ textAlign: 'right' }} fontSize={{ base: '1em', md: elementNameSize }}>{item.category}</Box>
-                                </Box>
-                            </Flex>
-                        ))}
-                    </div>
-                </GridItem>
-
-                {/* Video */}
-                <GridItem area={{ base: 'omsim', lg: 'periodic-video' }}>
-                    <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
-
-                        <Input
-                            color='teal'
-                            placeholder='Search Element'
-                            _placeholder={{ color: 'inherit' }}
-                            size='md'
-                            boxShadow='md'
-
-                            onClick={onOpen}
-                        />
-
-                        <Box width={'100%'} height={'20rem'} backgroundColor={'teal'} my={'1rem'} mx={'auto'}>
-                            <ReactPlayer
-                                controls
-                                width={'100%'}
-                                height={'100%'}
-                                url={symbolName.video} />
-                        </Box>
-                        {/* Description */}
-                        <Box my={'1rem'}>
-                            <Box>Description about the Element <span id="symbolname"><a href={symbolName.source} target="_blank">{symbolName.name}</a></span></Box>
-                            <br />
-                            {symbolName.summary}
-                        </Box>
-                        {/* Table */}
-                        <TableContainer>
-                            <Table variant='striped'>
-                                <Thead>
-                                    <Tr>
-                                        <Th>Melting Point</Th>
-                                        <Th>Boiling Point</Th>
-                                        <Th>Molar Heat</Th>
-                                        <Th>Density</Th>
-                                        <Th>Period</Th>
-                                    </Tr>
-                                </Thead>
-                                <Tbody>
-                                    <Tr>
-                                        <Td>{symbolName.melt}</Td>
-                                        <Td>{symbolName.boilingpoint}</Td>
-                                        <Td>{symbolName.molarheat}</Td>
-                                        <Td>{symbolName.density}</Td>
-                                        <Td>{symbolName.period}</Td>
-                                    </Tr>
-                                </Tbody>
-                            </Table>
-                            <a href={symbolName.source} target="_blank">
-                                <Button mx={'auto'} mt={'1em'}>Learn more</Button>
-                            </a>
-                        </TableContainer>
-                    </Flex>
-                </GridItem>
-
-            </Grid>
+                </Grid>
+            </>}
 
         </>
     );
