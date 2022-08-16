@@ -279,7 +279,7 @@ function PeriodicData() {
 
                                 {/* Picture and details */}
                                 <Center><Image src={elementName.image} alt='Sample' /></Center>
-                                <Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box>
+                                <Center><Box mb={'1.4rem'} mt={'.3rem'} fontSize={'12px'} opacity={'60%'}>Bohr Model Image</Box></Center>
 
                                 <Box> Phase:  {elementName.phase}</Box>
                                 <Box> Atomic mass:  {elementName.atomic_mass}</Box>
