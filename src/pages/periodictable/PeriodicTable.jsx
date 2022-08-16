@@ -2,7 +2,8 @@
 import data from './PeriodicTableJSON.json'
 import React, { useState, useRef, useEffect } from 'react';
 import "./PeriodicTable.css";
-import { Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
+import { color, Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 
 import {
     Box, Heading,
@@ -25,27 +26,37 @@ import {
 } from "@chakra-ui/react"
 
 const colorMap = {
-    "noble gas": "#FFBC42",
-    "alkaline earth metal": "#EC674E",
-    "diatomic nonmetal": "#D81159",
-    "alkali metal": "#8F2D56",
-    "transition metal": "#58586B",
-    "post-transition metal": "#218380",
-    lanthanide: "#4AABAF",
-    metalloid: "#73D2DE",
+    "noble gas": "FFBC42",
+    "alkaline earth metal": "EC674E",
+    "diatomic nonmetal": "D81159",
+    "alkali metal": "8F2D56",
+    "transition metal": "58586B",
+    "post-transition metal": "218380",
+    "polyatomic nonmetal": "D812DE",
+    "actinide": "4A567B",
+    lanthanide: "4AABAF",
+    metalloid: "73D2DE",
 };
 
 function PeriodicData() {
 
+    const [category, setCategory] = useState('Name')
+    const [showCategory, setShowCategory] = useState(false);
+
     const [loading, setLoading] = useState(true);
     const [content, setContent] = useState(false);
+
+    const [color, setColor] = useState('')
+
+    // const [colorName, setColorName] = useState(true);
+    // const [colorCategory, setColorCategory] = useState(false);
 
     // minus the score continously
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
             setContent(true);
-        }, 200);
+        }, 100);
     }, []);
 
     const [searchName, setSearchName] = useState('');
@@ -156,6 +167,7 @@ function PeriodicData() {
                                         } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
                                             return (val.name, val.summary, val.bohr_model_image, val.number, val.category, val.symbol, val.phase, val.atomic_mass, val.density, val.melt, val.boil, val.discovered_by, val.xpos, val.ypos, val['cpk-hex'])
                                         }
+                                        
                                     })).map((symbolName, key) => {
                                         return (
                                             //wrapper button
@@ -204,7 +216,7 @@ function PeriodicData() {
                         {/* search */}
                         <GridItem area={{ base: 'smalltop', xl: 'topright' }}
                             mx={{ base: '3%', md: '4%', lg: '6%' }}
-                            mt={{base:'1rem', xl: '0'}}>
+                            mt={{ base: '1rem', xl: '0' }}>
                             <Box mb={"1rem"}>
                                 <Input
                                     color='teal'
@@ -239,7 +251,6 @@ function PeriodicData() {
                                                 element.discovered_by,
                                                 element.xpos,
                                                 element.ypos,
-
                                             )}
                                         className="element"
                                         key={key}
@@ -249,7 +260,9 @@ function PeriodicData() {
                                             gridColumn: element.xpos,
                                             borderColor: 'black',
                                             color: 'black',
+                                            // backgroundColor: '#' + colorMap[element.category],
                                             backgroundColor: '#' + element['cpk-hex']
+                                            // backgroundColor: color,
                                         }}
                                     >
                                         <strong id='sym'>{element.symbol}</strong>
@@ -261,6 +274,81 @@ function PeriodicData() {
 
                                     </button>
                                 ))}
+                                {/* <Box
+                                    mx={'auto'}
+                                    my={'auto'}
+                                    fontSize={{ base: '0.5rem', sm: '0.65rem', md: '0.85rem', xl: '1rem', }}
+                                    style={{
+                                        gridRow: 1,
+                                        gridColumnStart: 13,
+                                        gridColumnEnd: 15,
+                                    }}
+                                >Display by:
+                                </Box>
+
+                                <Flex flexDirection={'column'}
+                                style={{
+                                    gridRow: 1,
+                                    gridColumnStart: 15,
+                                    gridColumnEnd: 17,
+                                }}>
+                                    <Button
+                                    mx={'auto'}
+                                    my={'auto'}
+                                    size={'md'}
+                                    borderRadius={'0'}
+                                    width={{ base: '3rem', md: '6rem', xl: '10rem', }}
+                                    fontSize={{ base: '0.5rem', sm: '0.65rem', md: '0.85rem', xl: '1rem', }}
+                                    onClick={() => {
+                                        setShowCategory(!showCategory);    
+                                    }}
+                                    >
+                                        {category}
+                                        <ChevronDownIcon ms={'auto'}></ChevronDownIcon>
+                                    </Button>
+
+                                    {showCategory && 
+                                        <UnorderedList
+                                            listStyleType={'none'}
+                                            ms={'0'}
+                                            mt={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
+                                            bgColor={'teal'}
+                                            position={'absolute'}
+                                            style={{ zIndex: '10' }}
+                                        >
+                                        
+                                            <ListItem>
+                                                <Button
+                                                    width={{ base: '4rem', md: '6rem', xl: '10rem', }}
+                                                    fontSize={{ base: '0.4rem', sm: '0.5rem', md: '0.75rem', xl: '1rem', }}
+                                                    height={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
+                                                    borderRadius={'0'}
+                                                    onClick={() => {
+                                                        setShowCategory(!showCategory); 
+                                                        setCategory('Name');     
+                                                    }}
+                                                >
+                                                    Name
+                                                </Button>
+                                            </ListItem>
+
+                                            <ListItem>
+                                                <Button
+                                                    width={{ base: '4rem', md: '6rem', xl: '10rem', }}
+                                                    fontSize={{ base: '0.4rem', sm: '0.5rem', md: '0.75rem', xl: '1rem', }}
+                                                    height={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
+                                                    borderRadius={'0'}
+                                                    onClick={() => {
+                                                        setShowCategory(!showCategory); 
+                                                        setCategory('Category');   
+                                                    }}
+                                                >
+                                                    Category
+                                                </Button>
+                                            </ListItem>
+                                        </UnorderedList>
+                                    }
+                                </Flex> */}
                             </Box>
                         </GridItem>
 
@@ -272,7 +360,7 @@ function PeriodicData() {
                             <Box minW={'20rem'} boxShadow='2xl' p={'1rem'} pt={'0rem'}>
 
                                 {/* Element name and short description */}
-                                <Badge mt={4} fontSize={{ base: '1em',  md: '1.1em', lg: '1.2em' }}>{elementName.name} ({elementName.symbol}) {elementName.number}</Badge>
+                                <Badge mt={4} fontSize={{ base: '1em', md: '1.1em', lg: '1.2em' }}>{elementName.name} ({elementName.symbol}) {elementName.number}</Badge>
                                 <Box>{elementName.category}</Box>
 
                                 <Box marginY='1.5rem'>{elementName.summary}</Box>
