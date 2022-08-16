@@ -17,6 +17,10 @@
     grid-template-columns: repeat(18, 2.3rem);
     grid-template-rows: repeat(10, 2.3rem);
   }
+  .periodic-table {
+    grid-gap: 2px;
+  }
+  
 }
 @media screen and (max-width: 767px) {
   .periodic-table {
@@ -29,11 +33,14 @@
     grid-template-columns: repeat(18, 1.5rem);
     grid-template-rows: repeat(10, 1.5rem);
   }
+  .periodic-table {
+    grid-gap: 0px;
+  }
 }
 @media screen and (max-width: 450px) {
   .periodic-table {
-    grid-template-columns: repeat(18, 1rem);
-    grid-template-rows: repeat(10, 1rem);
+    grid-template-columns: repeat(18, 1.2rem);
+    grid-template-rows: repeat(10, 1.2rem);
   }
 }
 

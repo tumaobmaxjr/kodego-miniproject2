@@ -5,6 +5,7 @@ import { Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const ScienceBlog = ({ data, header }) => {
+
     return (
         <>
             <Box id="Blogs" mx={{ base: '3%', md: '4%', lg: '6%' }}>
@@ -13,6 +14,7 @@ const ScienceBlog = ({ data, header }) => {
                     pb={{ base: '0.5em', md: '0' }}
                     mb={'1rem'}
                     mx={{ base: '20%', md: '25%' }}
+                    my={'1rem'}
                     fontSize={{ base: '1.5em', md: '1.8em' }}
                     fontWeight={'bold'}>
                     {header}
@@ -47,7 +49,7 @@ const ScienceBlog = ({ data, header }) => {
                             h={'30rem'}
                             objectFit='cover'
                             src={datas.urlToImage}
-                            alt='Picture about articles'
+                            alt='Sorry, no image available'
                         />
                         <Text my={'2'}>Source: {datas.source.name}</Text>
                     </Box>
