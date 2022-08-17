@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import ScienceBlog from "./ScienceBlog";
-import { Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
+import {
+    Skeleton, SkeletonCircle, SkeletonText, Stack,
+    Box,
+    Grid, GridItem,
+    Tabs, TabList, Tab,
+} from '@chakra-ui/react'
+import { LinkContainer } from "react-router-bootstrap";
+import { Nav } from "react-bootstrap";
 
 const GetScienceBlogAPI = () => {
 
@@ -20,7 +27,7 @@ const GetScienceBlogAPI = () => {
             .catch(error => console.log('error', error));
     }, []);
 
-    
+
     return (
         <>
             <ScienceBlog data={data} header={"BLOGS OF THE DAY!"} />
