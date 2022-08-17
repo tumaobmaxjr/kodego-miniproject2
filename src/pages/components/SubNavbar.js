@@ -39,18 +39,18 @@ export default function SubNavbar() {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/science-blog" id="links">
-                  <Nav.Link>
-                    <Tab>
-                      Blogs
-                    </Tab>
-                  </Nav.Link>
-                </LinkContainer>
-
                 <LinkContainer to="/games" id="links">
                   <Nav.Link>
                     <Tab>
                       Games
+                    </Tab>
+                  </Nav.Link>
+                </LinkContainer>
+
+                <LinkContainer to="/science-blog" id="links">
+                  <Nav.Link>
+                    <Tab>
+                      Blogs
                     </Tab>
                   </Nav.Link>
                 </LinkContainer>
