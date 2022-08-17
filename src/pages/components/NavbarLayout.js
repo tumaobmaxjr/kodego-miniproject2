@@ -22,7 +22,7 @@ export default function NavbarLayout() {
 
   return (
     <>
-      <Container maxW='100%' px={10} bg={useColorModeValue('gray.100', 'gray.900')} backdropFilter="auto" backdropBlur='10px'>
+      <Container maxW='100%' bg={useColorModeValue('gray.100', 'gray.900')} backdropFilter="auto" backdropBlur='10px'>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             icon={isOpen ? <SmallCloseIcon /> : <HamburgerIcon />}
@@ -31,13 +31,22 @@ export default function NavbarLayout() {
             isRound='true'
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+          <HStack ml={5} alignItems={'center'}>
+          {/* <img src="/logo.png" alt="logo" width="5%"/> */}
+            {/* <Box> Logo</Box> */}
+            <LinkContainer to="/">
+              <Nav.Link>
+                <img src="/logo.png" alt="logo" width="50px"/>
+              </Nav.Link>
+            </LinkContainer>
+            {/* <link rel="icon" href="./public/logo.png" /> */}
           </HStack>
+          
           <HStack
             as={'nav'}
             spacing={5}
-            display={{ base: 'none', md: 'flex' }}>
+            display={{ base: 'none', md: 'flex' }}
+            >
             <LinkContainer to="/about">
               <Nav.Link>
                 About
