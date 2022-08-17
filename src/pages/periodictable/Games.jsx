@@ -39,7 +39,7 @@ const Games = () => {
         setTimeout(() => {
             setLoading(false);
             setContent(true);
-        }, 100);
+        }, 1000);
     }, []);
 
     const [searchName, setSearchName] = useState('');

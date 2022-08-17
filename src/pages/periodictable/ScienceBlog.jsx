@@ -45,9 +45,9 @@ const ScienceBlog = ({ data, header }) => {
 
                         <Image
                             mx={'auto'}
-                            w={'40rem'}
-                            h={'30rem'}
-                            objectFit='cover'
+                            w={'auto'}
+                            h={'auto'}
+                            objectFit='contain'
                             src={datas.urlToImage}
                             alt='Sorry, no image available'
                         />
