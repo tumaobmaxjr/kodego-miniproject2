@@ -47,7 +47,7 @@ const ElementInfo = () => {
         setTimeout(() => {
             setLoading(false);
             setContent(true);
-        }, 200);
+        }, 100);
     }, []);
 
     const [searchName, setSearchName] = useState('');
