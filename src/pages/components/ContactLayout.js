@@ -13,18 +13,22 @@ import {
     Textarea,
     ButtonGroup,
     IconButton,
-    Divider
+    Divider,
+    RequiredIndicator
 } from "@chakra-ui/react";
 import {
     MdPhone,
     MdEmail,
     MdLocationOn,
 } from "react-icons/md";
+import "../periodictable/PeriodicTable.css";
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function ContactLayout() {
+    
+    const [emailSent, setEmailSent] = useState(false);
 
     const form = useRef();
 
@@ -34,10 +38,19 @@ export default function ContactLayout() {
         emailjs.sendForm('service_p6ey2wf', 'template_m14tbfg', form.current, 'p5RqdtU-D5pgYAT16')
             .then((result) => {
                 console.log(result.text);
+                setEmailSent(true);
             }, (error) => {
                 console.log(error.text);
             });
+            
+            e.target.reset();
+            
     };
+
+    //hide succesful messages
+    setTimeout(() => {
+        setEmailSent(false);
+    }, 5000);
 
     return (
         <Container maxW='container.xl'>
@@ -67,7 +80,7 @@ export default function ContactLayout() {
                                 height="48px"
                                 width="200px"
                                 variant="ghost"
-                                _hover={{ border: '2px solid #008080' }}
+                                _hover={{ border: '1px solid #008080' }}
                                 leftIcon={<MdPhone color="#008080" size="20px" />}>
                                 +63 900 000 0000
                             </Button>
@@ -76,7 +89,7 @@ export default function ContactLayout() {
                                 height="48px"
                                 width="200px"
                                 variant="ghost"
-                                _hover={{ border: '2px solid #008080' }}
+                                _hover={{ border: '1px solid #008080' }}
                                 leftIcon={<MdEmail color="#008080" size="20px" />}>
                                 ptable@email.com
                             </Button>
@@ -85,7 +98,7 @@ export default function ContactLayout() {
                                 height="48px"
                                 width="200px"
                                 variant="ghost"
-                                _hover={{ border: '2px solid #008080' }}
+                                _hover={{ border: '1px solid #008080' }}
                                 leftIcon={<MdLocationOn color="#008080" size="20px" />}>
                                 Manila, Philippines
                             </Button>
@@ -108,22 +121,23 @@ export default function ContactLayout() {
                     align={'center'}
                     w={'full'}>
 
-                    <Box bg="gray.100" borderRadius="lg">
+                    <Box bg="gray.100" borderRadius="lg" pb={'2rem'}>
                         <Box m={8} color="#0B0E3F">
                             <VStack spacing={5}>
                                 <form ref={form} onSubmit={sendEmail}>
-                                    <FormControl id="name">
-                                        <FormLabel>Name</FormLabel>
-                                        <Input mb={'1rem'} borderColor="gray.300" type="text" size="md" name="fullname" />
+                                    <FormControl id="name" isRequired>
+                                        <FormLabel htmlFor="fname" requiredIndicator=''>Name</FormLabel>
+                                        <Input mb={'1rem'} borderColor="gray.400" type="text" size="md" name="fullname" _hover={{ border: '1px solid #008080' }} />
 
-                                        <FormLabel>Email</FormLabel>
-                                        <Input mb={'1rem'} borderColor="gray.300" type="email" size="md" name="email" />
+                                        <FormLabel requiredIndicator=''>Email</FormLabel>
+                                        <Input mb={'1rem'} borderColor="gray.400" type="email" size="md" name="email" _hover={{ border: '1px solid #008080' }}/>
 
-                                        <FormLabel>Message</FormLabel>
+                                        <FormLabel requiredIndicator=''>Message</FormLabel>
                                         <Textarea
                                             mb={'1rem'}
-                                            borderColor="gray.300"
+                                            borderColor="gray.400"
                                             name="message"
+                                            _hover={{ border: '1px solid #008080' }}
                                         />
                                         <Button
                                             type="submit"
@@ -132,12 +146,22 @@ export default function ContactLayout() {
                                             variant="solid"
                                             // bg="#0D74FF"
                                             bg="#008080"
-                                            color="white">
+                                            color="white"
+                                            _hover={{ backgroundColor: 'teal.400' }}
+                                            // onClick={() => { 
+                                            //     if(Textarea.length > 1){
+                                            //         setEmailSent(true)
+                                            //     }
+                                            // }}
+                                            >
                                             Send Message
                                         </Button>
                                     </FormControl>
                                 </form>
                             </VStack>
+                            {emailSent && 
+                            <Box position={'fixed'}>Your message has been sent!</Box> 
+                            }
                         </Box>
                     </Box>
                 </Flex>
