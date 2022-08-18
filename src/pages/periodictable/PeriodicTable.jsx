@@ -122,7 +122,7 @@ function PeriodicData() {
 
         <>
             <Helmet>
-                <title>Periodic Table - PTable</title>
+                <title>PTable</title>
             </Helmet>
             {loading &&
                 <Stack mx={'10%'} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
