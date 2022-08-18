@@ -5,7 +5,7 @@ const Contact = () => {
     return (
         <div>
             <Helmet>
-                <title>Contact</title>
+                <title>Contact - PTable</title>
             </Helmet>
             <ContactLayout />
         </div>

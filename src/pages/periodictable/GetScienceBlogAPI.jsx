@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from "react-bootstrap";
+import { Helmet } from 'react-helmet';
 
 const GetScienceBlogAPI = () => {
 
@@ -30,6 +31,9 @@ const GetScienceBlogAPI = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Science Blogs - PTable</title>
+            </Helmet>
             <ScienceBlog data={data} header={"BLOGS OF THE DAY!"} />
             {loading &&
                 <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>

@@ -1,5 +1,4 @@
 import "./PeriodicTable.css";
-
 import { Heading, Text, Image, Box, Center, Button, Flex } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
