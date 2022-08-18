@@ -157,7 +157,7 @@ function PeriodicData() {
                                         _placeholder={{ color: 'inherit' }}
                                         size='md'
                                         boxShadow='md'
-
+                                        autoFocus
                                         onChange={event => { setSearchName(event.target.value) }}
                                         onClick={event => { setSearchName(event.target.value = '') }}
                                     // ref={inputRef}
@@ -174,8 +174,8 @@ function PeriodicData() {
                                     })).map((symbolName, key) => {
                                         return (
                                             //wrapper button
-                                            <Button onClick={onClose} id='wrapper-button'>
-                                                <Button onClick={() => changeName
+                                            // <Button onClick={onClose} id='wrapper-button'>
+                                                <Button onClick={() => {changeName
                                                     (
                                                         symbolName.name,
                                                         symbolName.summary,
@@ -191,12 +191,13 @@ function PeriodicData() {
                                                         symbolName.discovered_by,
                                                         symbolName.xpos,
                                                         symbolName.ypos,
-
-                                                    )}
-                                                    my={'0.5rem'} textAlign='center'>
+                                                    );
+                                                    onClose(onClose);
+                                                    }}
+                                                    my={'0.25rem'} mx={'0.25rem'} textAlign='center'>
                                                     <Box key={key.number}>{symbolName.name}</Box>
                                                 </Button>
-                                            </Button>
+                                            // </Button>
                                         )
                                     }
                                     )}
@@ -227,7 +228,6 @@ function PeriodicData() {
                                     _placeholder={{ color: 'inherit' }}
                                     size='md'
                                     boxShadow='md'
-
                                     onClick={onOpen}
                                 />
                             </Box>
@@ -277,81 +277,7 @@ function PeriodicData() {
 
                                     </button>
                                 ))}
-                                {/* <Box
-                                    mx={'auto'}
-                                    my={'auto'}
-                                    fontSize={{ base: '0.5rem', sm: '0.65rem', md: '0.85rem', xl: '1rem', }}
-                                    style={{
-                                        gridRow: 1,
-                                        gridColumnStart: 13,
-                                        gridColumnEnd: 15,
-                                    }}
-                                >Display by:
-                                </Box>
-
-                                <Flex flexDirection={'column'}
-                                style={{
-                                    gridRow: 1,
-                                    gridColumnStart: 15,
-                                    gridColumnEnd: 17,
-                                }}>
-                                    <Button
-                                    mx={'auto'}
-                                    my={'auto'}
-                                    size={'md'}
-                                    borderRadius={'0'}
-                                    width={{ base: '3rem', md: '6rem', xl: '10rem', }}
-                                    fontSize={{ base: '0.5rem', sm: '0.65rem', md: '0.85rem', xl: '1rem', }}
-                                    onClick={() => {
-                                        setShowCategory(!showCategory);    
-                                    }}
-                                    >
-                                        {category}
-                                        <ChevronDownIcon ms={'auto'}></ChevronDownIcon>
-                                    </Button>
-
-                                    {showCategory && 
-                                        <UnorderedList
-                                            listStyleType={'none'}
-                                            ms={'0'}
-                                            mt={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
-                                            bgColor={'teal'}
-                                            position={'absolute'}
-                                            style={{ zIndex: '10' }}
-                                        >
-                                        
-                                            <ListItem>
-                                                <Button
-                                                    width={{ base: '4rem', md: '6rem', xl: '10rem', }}
-                                                    fontSize={{ base: '0.4rem', sm: '0.5rem', md: '0.75rem', xl: '1rem', }}
-                                                    height={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
-                                                    borderRadius={'0'}
-                                                    onClick={() => {
-                                                        setShowCategory(!showCategory); 
-                                                        setCategory('Name');     
-                                                    }}
-                                                >
-                                                    Name
-                                                </Button>
-                                            </ListItem>
-
-                                            <ListItem>
-                                                <Button
-                                                    width={{ base: '4rem', md: '6rem', xl: '10rem', }}
-                                                    fontSize={{ base: '0.4rem', sm: '0.5rem', md: '0.75rem', xl: '1rem', }}
-                                                    height={{ base: '1rem', md: '1.75rem', xl: '2.5rem', }}
-                                                    borderRadius={'0'}
-                                                    onClick={() => {
-                                                        setShowCategory(!showCategory); 
-                                                        setCategory('Category');   
-                                                    }}
-                                                >
-                                                    Category
-                                                </Button>
-                                            </ListItem>
-                                        </UnorderedList>
-                                    }
-                                </Flex> */}
+                                
                             </Box>
                         </GridItem>
 

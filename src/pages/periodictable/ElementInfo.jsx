@@ -153,6 +153,7 @@ const ElementInfo = () => {
 
                                     onChange={event => { setSearchName(event.target.value) }}
                                     onClick={event => { setSearchName(event.target.value = '') }}
+                                    autoFocus
                                 />
                                 {data.elements.filter((val => {
                                     //if search name is empty it will retrun nothing
@@ -173,8 +174,8 @@ const ElementInfo = () => {
                                     }
                                 })).map((symbolName, key) => {
                                     return (
-                                        <Button onClick={onClose} id='wrapper-button'>
-                                            <Button onClick={() => changeSymbolName
+                                        // <Button onClick={onClose} id='wrapper-button'>
+                                            <Button onClick={() => {changeSymbolName
                                                 (symbolName.name,
                                                     symbolName.summary,
                                                     symbolName.video,
@@ -184,10 +185,12 @@ const ElementInfo = () => {
                                                     symbolName.density,
                                                     symbolName.period,
                                                     symbolName.source,
-                                                )} my={'0.5rem'} textAlign='center'>
+                                                );
+                                                onClose(onClose);
+                                                }} my={'0.25rem'} mx={'0.25rem'} textAlign='center'>
                                                 <Box key={key.number}>{symbolName.name}</Box>
                                             </Button>
-                                        </Button>
+                                        //  </Button> 
                                     )
                                 }
                                 )}
