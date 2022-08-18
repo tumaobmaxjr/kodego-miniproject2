@@ -78,7 +78,7 @@ const ElementInfo = () => {
         name: 'Hydrogen',
         summary: 'Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.00794 u, hydrogen is the lightest element on the periodic table. Its monatomic form (H) is the most abundant chemical substance in the Universe, constituting roughly 75% of all baryonic mass.',
         category: "diatomic nonmetal",
-        video: 'https://youtu.be/cxFb4hmfVT0',
+        video: 'https://youtu.be/6rdmpx39PRk',
         melt: '13.99',
         boilingpoint: '20.271',
         molarheat: '28.836',
