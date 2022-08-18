@@ -39,10 +39,10 @@ export default function SubNavbar() {
                   </Nav.Link>
                 </LinkContainer>
 
-                <LinkContainer to="/games" id="links">
+                <LinkContainer to="/game" id="links">
                   <Nav.Link>
                     <Tab>
-                      Games
+                      Game
                     </Tab>
                   </Nav.Link>
                 </LinkContainer>

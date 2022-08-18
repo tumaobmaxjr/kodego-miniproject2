@@ -25,7 +25,8 @@ const ScienceBlog = ({ data, header }) => {
                     h={'100vh'}
                     top={'0vh'}
                     left={'0vw'}
-                    backdropFilter='blur(20px) hue-rotate(5deg)'
+                    bg='blackAlpha.300'
+                    backdropFilter='blur(20px) hue-rotate(40deg)'
                     backdropInvert='80%'
                     backdropBlur='2px'
                 >
