@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import "./PeriodicTable.css";
 import { color, Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-
+import { Helmet } from 'react-helmet';
 import {
     Box, Heading,
     Flex, Grid, GridItem, Spacer, HStack,
@@ -121,6 +121,9 @@ function PeriodicData() {
     return (
 
         <>
+            <Helmet>
+                <title>Periodic Table - PTable</title>
+            </Helmet>
             {loading &&
                 <Stack mx={'10%'} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
                     <Skeleton height='50px' />

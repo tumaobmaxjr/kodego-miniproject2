@@ -5,7 +5,7 @@ const NoPage = () => {
     return (
         <div>
             <Helmet>
-                <title>Page Not Found</title>
+                <title>Page Not Found - PTable</title>
             </Helmet>
             <ErrorLayout />
         </div>
