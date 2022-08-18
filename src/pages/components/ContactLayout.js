@@ -47,6 +47,7 @@ export default function ContactLayout() {
             
     };
 
+    //hide succesful messages
     setTimeout(() => {
         setEmailSent(false);
     }, 5000);
