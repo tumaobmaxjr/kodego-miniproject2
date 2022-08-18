@@ -1,7 +1,7 @@
 import data from './PeriodicTableJSON.json';
 import React, { useState, useRef, useEffect } from 'react';
 import './PeriodicTable.css'
-
+import { Helmet } from 'react-helmet';
 import {
     Box, Heading,
     Flex, Grid, GridItem, Spacer, HStack,
@@ -126,6 +126,9 @@ const Games = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Games - PTable</title>
+            </Helmet>
             {loading &&
                 <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
                     <Skeleton height='50px' />

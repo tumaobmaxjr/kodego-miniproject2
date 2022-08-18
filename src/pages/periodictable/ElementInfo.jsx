@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player'
 import { useEffect, useState, useRef } from "react";
 import "./PeriodicTable.css";
 import { Skeleton, SkeletonCircle, SkeletonText, Stack } from '@chakra-ui/react'
-
+import { Helmet } from 'react-helmet';
 import {
     GridItem, Grid,
     Flex, Spacer,
@@ -110,6 +110,9 @@ const ElementInfo = () => {
 
     return (
         <>
+            <Helmet>
+                <title>List with properties - PTable</title>
+            </Helmet>
             {loading &&
                 <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
                     <Skeleton height='50px' />

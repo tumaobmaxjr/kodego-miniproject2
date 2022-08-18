@@ -5,7 +5,7 @@ const About = () => {
     return (
         <div>
             <Helmet>
-                <title>About</title>
+                <title>About - PTable</title>
             </Helmet>
             <AboutLayout />
         </div>
