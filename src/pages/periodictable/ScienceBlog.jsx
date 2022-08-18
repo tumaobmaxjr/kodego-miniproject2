@@ -1,5 +1,5 @@
 import "./PeriodicTable.css";
-import { Heading, Text, Image, Box, Center, Button, Flex } from '@chakra-ui/react'
+import { Heading, Text, Image, Box, Center, CloseButton, Flex } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from "react";
@@ -32,13 +32,13 @@ const ScienceBlog = ({ data, header }) => {
                     <Flex
                         justifyContent={'end'}
                     >
-                        <Button
+                        <CloseButton
                             my={'2.5vh'}
                             mx={'2.5vw'}
                             onClick={() => {
                                 setShowImage(false);
                             }}
-                        >Close</Button>
+                        />
                     </Flex>
                     <Image
                         w={'auto'}
