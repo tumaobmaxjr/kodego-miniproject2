@@ -103,7 +103,7 @@ export default function ContactLayout() {
                                 Manila, Philippines
                             </Button>
                             <Divider py={'5px'}/>
-                            <ButtonGroup variant="ghost" spacing={6} pt={'15px'}>
+                            <ButtonGroup variant="ghost" spacing={6} pt={'15px'}  pl={'15px'}>
                                 <IconButton as="a" href="https://github.com/tumaobmaxjr/kodego-miniproject2" isRound='true' aria-label="Github" icon={<FaGithub fontSize="30px" />}/>
                                 <IconButton as="a" href="#" isRound='true' aria-label="Twitter" icon={<FaTwitter fontSize="30px" />} />
                                 <IconButton as="a" href="#" isRound='true' aria-label="Instagram" icon={<FaInstagram fontSize="30px" />} />
