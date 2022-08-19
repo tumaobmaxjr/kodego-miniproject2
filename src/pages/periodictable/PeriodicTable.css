@@ -67,6 +67,7 @@ color: none;
 .element:hover {
   transform: scale(1.50, 1.50);
   z-index: 1; 
+  transition: top, left, right, bottom, 200ms ease-in-out;
 }
 
 .element .number {
