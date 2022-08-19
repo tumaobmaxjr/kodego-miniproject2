@@ -174,7 +174,6 @@ const ElementInfo = () => {
                                     }
                                 })).map((symbolName, key) => {
                                     return (
-                                        // <Button onClick={onClose} id='wrapper-button'>
                                             <Button onClick={() => {changeSymbolName
                                                 (symbolName.name,
                                                     symbolName.summary,
@@ -190,7 +189,6 @@ const ElementInfo = () => {
                                                 }} my={'0.25rem'} mx={'0.25rem'} textAlign='center'>
                                                 <Box key={key.number}>{symbolName.name}</Box>
                                             </Button>
-                                        //  </Button> 
                                     )
                                 }
                                 )}
@@ -276,7 +274,7 @@ const ElementInfo = () => {
                     </GridItem>
 
                     {/* Video */}
-                    <GridItem area={{ base: 'omsim', lg: 'periodic-video' }}>
+                    <GridItem area={{ base: 'omsim', lg: 'periodic-video'}} mb={'50px'}>
                         <Flex justifyContent={'center'} flexDirection={'column'} textAlign={'center'} id='element-video'>
 
                             <Input
@@ -297,7 +295,7 @@ const ElementInfo = () => {
                                     url={symbolName.video} />
                             </Box>
                             {/* Description */}
-                            <Box my={'1rem'}>
+                            <Box my={'.5rem'}>
                                 <Box>Description about the Element <span id="symbolname"><a href={symbolName.source} target="_blank">{symbolName.name}</a></span></Box>
                                 <br />
                                 {symbolName.summary}
@@ -325,7 +323,7 @@ const ElementInfo = () => {
                                     </Tbody>
                                 </Table>
                                 <a href={symbolName.source} target="_blank">
-                                    <Button mx={'auto'} mt={'1em'}>Learn more</Button>
+                                    <Button mx={'auto'} my={'1em'}>Learn more</Button>
                                 </a>
                             </TableContainer>
                         </Flex>
