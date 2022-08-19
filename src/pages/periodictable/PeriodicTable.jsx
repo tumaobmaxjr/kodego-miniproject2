@@ -138,7 +138,7 @@ function PeriodicData() {
             }
 
             {content &&
-                <>
+                <Box>
                     <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
                         {/* <ModalOverlay /> */}
                         <ModalOverlay
@@ -309,7 +309,7 @@ function PeriodicData() {
 
                         </GridItem>
                     </Grid>
-                </>
+                </Box>
             }
 
 

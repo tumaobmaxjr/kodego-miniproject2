@@ -16,7 +16,7 @@ export default function SubNavbar() {
         templateAreas={`"head head"
                                 "left right"`}
         gridTemplateColumns={'3fr 1fr'}
-        mt={'1.5rem'}
+        mt={'5rem'}
         mx={{ base: '3%', md: '5%', lg: '6%' }}
       >
         <GridItem area={{ base: 'head', lg: 'left' }}>
