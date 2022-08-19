@@ -50,7 +50,7 @@ export default function SubNavbar() {
                 <LinkContainer to="/science-article" id="links">
                   <Nav.Link>
                     <Tab>
-                      Article
+                      Science Article
                     </Tab>
                   </Nav.Link>
                 </LinkContainer>

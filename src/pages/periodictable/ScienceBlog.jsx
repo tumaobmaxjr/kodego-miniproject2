@@ -1,9 +1,8 @@
 import "./PeriodicTable.css";
 import { Heading, Text, Image, Box, Center, CloseButton, Flex } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { ExternalLinkIcon, ArrowUpIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from "react";
-import { ArrowUpIcon } from '@chakra-ui/icons';
 import ScrollToTop from "react-scroll-to-top";
 
 const ScienceBlog = ({ data, header }) => {
@@ -37,9 +36,7 @@ const ScienceBlog = ({ data, header }) => {
                         justifyContent={'end'}
                     >
                         <CloseButton
-                            backgroundColor={'teal.300'}
-                            color={'black'}
-                            _hover={{ backgroundColor: 'teal.200' }}
+                            _hover={{ backgroundColor: 'red', color: 'white' }}
                             w='2.5rem'
                             h={'2.5rem'}
                             mt={{base:'3vh' , md:'2.5vh'}}

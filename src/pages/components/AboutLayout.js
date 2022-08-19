@@ -24,29 +24,10 @@ function AboutLayout() {
                     fontWeight={600}
                     fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                     <Text as={'span'}>
-                        About Name
+                        About Us
                     </Text>
-                    {/* <br /> */}
-                    {/* <Text as={'span'} color={'red.400'}>
-                        About Periodic Table of Elements
-                    </Text> */}
                 </Heading>
                 <Text color={'gray.500'}>
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
                     Snippy is a rich coding snippets app that lets you create your own
                     code snippets, categorize them, and even sync them in the cloud so
                     you can use them anywhere. All that is free!
