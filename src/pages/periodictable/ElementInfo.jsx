@@ -29,7 +29,7 @@ import {
     TableCaption,
     TableContainer,
 } from "@chakra-ui/react";
-
+import { ArrowUpIcon } from '@chakra-ui/icons';
 import ScrollToTop from "react-scroll-to-top";
 
 const tabledataWidth = "3.5rem";
@@ -328,7 +328,8 @@ const ElementInfo = () => {
                                     <Button mx={'auto'} my={'1em'}>Learn more</Button>
                                 </a>
                             </TableContainer>
-                            <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}>UP</p>} />
+                            {/* <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}>UP</p>} /> */}
+                            <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}><ArrowUpIcon /></p>} />
                         </Flex>
                     </GridItem>
 
