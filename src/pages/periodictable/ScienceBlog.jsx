@@ -20,6 +20,7 @@ const ScienceBlog = ({ data, header }) => {
         <>
             {showImage &&
                 <Box
+                    mt={'3rem'}
                     position={'fixed'}
                     w={'100vw'}
                     h={'100vh'}
@@ -34,7 +35,12 @@ const ScienceBlog = ({ data, header }) => {
                         justifyContent={'end'}
                     >
                         <CloseButton
-                            my={'2.5vh'}
+                            backgroundColor={'teal.300'}
+                            color={'black'}
+                            _hover={{ backgroundColor: 'teal.200' }}
+                            w='2.5rem'
+                            h={'2.5rem'}
+                            mt={{base:'3vh' , md:'2.5vh'}}
                             mx={'2.5vw'}
                             onClick={() => {
                                 setShowImage(false);
