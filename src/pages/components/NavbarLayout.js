@@ -22,7 +22,7 @@ export default function NavbarLayout() {
 
   return (
     <>
-      <Container maxW='100%' bg={useColorModeValue('gray.100', 'gray.900')} backdropFilter="auto" backdropBlur='10px'>
+      <Container maxW='100%' bg={useColorModeValue('gray.100', 'gray.900')} backdropFilter="auto" backdropBlur='10px' position={'fixed'} left='0' top='0' zIndex={'10'}> 
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             icon={isOpen ? <SmallCloseIcon /> : <HamburgerIcon />}

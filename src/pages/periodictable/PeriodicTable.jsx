@@ -111,13 +111,6 @@ function PeriodicData() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
-    // for input focus
-    // const inputRef = useRef();
-
-    // const clickForFocus = () =>{
-    //     inputRef.current.focus();
-    // }
-
     return (
 
         <>
@@ -138,7 +131,7 @@ function PeriodicData() {
             }
 
             {content &&
-                <>
+                <Box>
                     <Modal isOpen={isOpen} onClose={onClose} scrollBehavior={scrollBehavior} motionPreset='slideInBottom'>
                         {/* <ModalOverlay /> */}
                         <ModalOverlay
@@ -309,7 +302,7 @@ function PeriodicData() {
 
                         </GridItem>
                     </Grid>
-                </>
+                </Box>
             }
 
 

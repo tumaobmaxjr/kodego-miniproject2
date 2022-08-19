@@ -10,7 +10,7 @@ import {
 
 function AboutLayout() {
     return (
-        <Container maxW='container.xl'>
+        <Container maxW='container.xl' mt={'2rem'}>
         <Stack
             align={'center'}
             spacing={{ base: 8, md: 10 }}
