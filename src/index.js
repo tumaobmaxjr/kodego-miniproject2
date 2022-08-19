@@ -24,7 +24,7 @@ export default function App() {
             <Route path="/" element={<PeriodicTable />} />
             <Route path="periodic-table" element={<PeriodicTable />} />
             <Route path="element-info" element={<ElementInfo />} />
-            <Route path="science-blog" element={<GetScienceBlogAPI />} />
+            <Route path="science-article" element={<GetScienceBlogAPI />} />
             <Route path="game" element={<Games />} />
           </Route>
           <Route path="about" element={<About />} />

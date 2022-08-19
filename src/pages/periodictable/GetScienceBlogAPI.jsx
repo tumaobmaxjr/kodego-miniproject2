@@ -32,9 +32,9 @@ const GetScienceBlogAPI = () => {
     return (
         <>
             <Helmet>
-                <title>Science Blogs - PTable</title>
+                <title>Science Article - PTable</title>
             </Helmet>
-            <ScienceBlog data={data} header={"BLOGS OF THE DAY!"} />
+            <ScienceBlog data={data} header={"Articles for you"} />
             {loading &&
                 <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>
                     <Skeleton height='50px' />
