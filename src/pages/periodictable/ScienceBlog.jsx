@@ -3,6 +3,8 @@ import { Heading, Text, Image, Box, Center, CloseButton, Flex } from '@chakra-ui
 import { Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from "react";
+import { ArrowUpIcon } from '@chakra-ui/icons';
+import ScrollToTop from "react-scroll-to-top";
 
 const ScienceBlog = ({ data, header }) => {
 
@@ -110,8 +112,10 @@ const ScienceBlog = ({ data, header }) => {
                             />
                             <Text my={'2'}>Source: {datas.source.name}</Text>
                         </Box>
+                        
                     )
                 })}
+                <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}><ArrowUpIcon /></p>} />
             </Box>
         </>
     );

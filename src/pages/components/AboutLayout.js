@@ -10,13 +10,13 @@ import {
 
 function AboutLayout() {
     return (
-        <Container maxW='container.xl' mt={'2rem'}>
+        <Container maxW='container.xl'>
         <Stack
             align={'center'}
             spacing={{ base: 8, md: 10 }}
             // py={{ base: 20, md: 20 }}
-            pt='10'
-            pb='28'
+            pt='100px'
+            pb='50px'
             direction={{ base: 'column', md: 'row' }}>
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>
                 <Heading
