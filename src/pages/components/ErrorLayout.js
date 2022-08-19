@@ -43,14 +43,16 @@ function ErrorLayout() {
                     This page you're looking for does not seem to exist
                 </Text>
                 <Button
+                    my={'1rem'}
                     variant="solid"
                     // bg="#0D74FF"
-                    bg="#1C6FEB"
+                    bg="#008080"
                     color="white"
-                    _hover={{}}>
-                        <Link href='/' style={{ textDecoration: 'none' }}>
-                            Go to Home
-                        </Link>
+                    _hover={{ backgroundColor: 'teal.400' }}
+                    >
+                    <Link href='/' style={{ textDecoration: 'none' }}>
+                        Go to Home
+                    </Link>
                 </Button>
             </Stack>
         </Stack>

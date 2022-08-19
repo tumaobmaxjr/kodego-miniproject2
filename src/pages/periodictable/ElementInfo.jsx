@@ -29,7 +29,7 @@ import {
     TableCaption,
     TableContainer,
 } from "@chakra-ui/react";
-import { ArrowUpIcon } from '@chakra-ui/icons';
+import { ArrowUpIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import ScrollToTop from "react-scroll-to-top";
 
 const tabledataWidth = "3.5rem";
@@ -297,7 +297,7 @@ const ElementInfo = () => {
                                     url={symbolName.video} />
                             </Box>
                             {/* Description */}
-                            <Box my={'.5rem'}>
+                            <Box>
                                 <Box>Description about the Element <span id="symbolname"><a href={symbolName.source} target="_blank">{symbolName.name}</a></span></Box>
                                 <br />
                                 {symbolName.summary}
@@ -325,7 +325,17 @@ const ElementInfo = () => {
                                     </Tbody>
                                 </Table>
                                 <a href={symbolName.source} target="_blank">
-                                    <Button mx={'auto'} my={'1em'}>Learn more</Button>
+                                    {/* <Button mx={'auto'} my={'1rem'} >Learn more</Button> */}
+                                    <Button
+                                            my={'1rem'}
+                                            variant="solid"
+                                            // bg="#0D74FF"
+                                            bg="#008080"
+                                            color="white"
+                                            _hover={{ backgroundColor: 'teal.400' }}
+                                            >
+                                            Learn more <ExternalLinkIcon ml='4px' />
+                                    </Button>
                                 </a>
                             </TableContainer>
                             <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}><ArrowUpIcon /></p>} />
