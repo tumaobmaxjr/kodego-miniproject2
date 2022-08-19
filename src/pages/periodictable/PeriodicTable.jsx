@@ -111,13 +111,6 @@ function PeriodicData() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
-    // for input focus
-    // const inputRef = useRef();
-
-    // const clickForFocus = () =>{
-    //     inputRef.current.focus();
-    // }
-
     return (
 
         <>
