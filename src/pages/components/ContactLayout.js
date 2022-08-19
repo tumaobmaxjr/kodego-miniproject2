@@ -27,7 +27,7 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function ContactLayout() {
-    
+
     const [emailSent, setEmailSent] = useState(false);
 
     const form = useRef();
@@ -42,9 +42,9 @@ export default function ContactLayout() {
             }, (error) => {
                 console.log(error.text);
             });
-            
-            e.target.reset();
-            
+
+        e.target.reset();
+
     };
 
     //hide succesful messages
@@ -60,6 +60,9 @@ export default function ContactLayout() {
                 pt='10'
                 pb='28'
                 direction={{ base: 'column', md: 'row' }}>
+                
+                
+
                 <Stack flex={1} spacing={{ base: 5, md: 10 }}>
                     <Heading
                         lineHeight={1.1}
@@ -70,7 +73,7 @@ export default function ContactLayout() {
                         </Text>
                     </Heading>
                     <Text color={'gray.500'}>
-                        Feel free to contact us via email or direct message on any of our social media channels, 
+                        Feel free to contact us via email or direct message on any of our social media channels,
                         and don't forget to follow us!
                     </Text>
                     <Box>
@@ -102,9 +105,9 @@ export default function ContactLayout() {
                                 leftIcon={<MdLocationOn color="#008080" size="20px" />}>
                                 Manila, Philippines
                             </Button>
-                            <Divider py={'5px'}/>
-                            <ButtonGroup variant="ghost" spacing={6} pt={'15px'}  pl={'15px'}>
-                                <IconButton as="a" href="https://github.com/tumaobmaxjr/kodego-miniproject2" isRound='true' aria-label="Github" icon={<FaGithub fontSize="30px" />}/>
+                            <Divider py={'5px'} />
+                            <ButtonGroup variant="ghost" spacing={6} pt={'15px'} pl={'15px'}>
+                                <IconButton as="a" href="https://github.com/tumaobmaxjr/kodego-miniproject2" isRound='true' aria-label="Github" icon={<FaGithub fontSize="30px" />} />
                                 <IconButton as="a" href="#" isRound='true' aria-label="Twitter" icon={<FaTwitter fontSize="30px" />} />
                                 <IconButton as="a" href="#" isRound='true' aria-label="Instagram" icon={<FaInstagram fontSize="30px" />} />
                             </ButtonGroup>
@@ -115,6 +118,7 @@ export default function ContactLayout() {
                         direction={{ base: 'column', sm: 'row' }}>
                     </Stack>
                 </Stack>
+
                 <Flex
                     flex={1}
                     justify={'center'}
@@ -130,7 +134,7 @@ export default function ContactLayout() {
                                         <Input mb={'1rem'} borderColor="gray.400" type="text" size="md" name="fullname" _hover={{ border: '1px solid #008080' }} />
 
                                         <FormLabel requiredIndicator=''>Email</FormLabel>
-                                        <Input mb={'1rem'} borderColor="gray.400" type="email" size="md" name="email" _hover={{ border: '1px solid #008080' }}/>
+                                        <Input mb={'1rem'} borderColor="gray.400" type="email" size="md" name="email" _hover={{ border: '1px solid #008080' }} />
 
                                         <FormLabel requiredIndicator=''>Message</FormLabel>
                                         <Textarea
@@ -148,19 +152,19 @@ export default function ContactLayout() {
                                             bg="#008080"
                                             color="white"
                                             _hover={{ backgroundColor: 'teal.400' }}
-                                            // onClick={() => { 
-                                            //     if(Textarea.length > 1){
-                                            //         setEmailSent(true)
-                                            //     }
-                                            // }}
-                                            >
+                                        // onClick={() => { 
+                                        //     if(Textarea.length > 1){
+                                        //         setEmailSent(true)
+                                        //     }
+                                        // }}
+                                        >
                                             Send Message
                                         </Button>
                                     </FormControl>
                                 </form>
                             </VStack>
-                            {emailSent && 
-                            <Box position={'fixed'}>Your message has been sent!</Box> 
+                            {emailSent &&
+                                <Box position={'fixed'}>Your message has been sent!</Box>
                             }
                         </Box>
                     </Box>
