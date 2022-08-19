@@ -328,7 +328,6 @@ const ElementInfo = () => {
                                     <Button mx={'auto'} my={'1em'}>Learn more</Button>
                                 </a>
                             </TableContainer>
-                            {/* <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}>UP</p>} /> */}
                             <ScrollToTop smooth top={50} width={'2rem'} height={'2rem'} component={<p style={{ color: "teal" }}><ArrowUpIcon /></p>} />
                         </Flex>
                     </GridItem>
