@@ -11,7 +11,6 @@ import {
     ListIcon
 } from '@chakra-ui/react';
 import { MdCheckCircle } from "react-icons/md";
-import image from '../image/Picsart_22-08-20_11-51-58-396.png';
 
 function AboutLayout() {
     return (
@@ -24,14 +23,14 @@ function AboutLayout() {
             pb='50px'
             direction={{ base: 'column', md: 'row' }}>
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-                {/* <Heading
+                <Heading
                     lineHeight={1.1}
                     fontWeight={600}
                     fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                     <Text as={'span'}>
                         About
                     </Text>
-                </Heading> */}
+                </Heading>
 
                 <Text>
                     <Text
@@ -95,14 +94,12 @@ function AboutLayout() {
                 flex={1}
                 justify={'center'}
                 align={'center'}
-                w={'full'}
-                h={'full'}>
+                w={'full'}>
                 <Box
                     height={'300px'}
                     rounded={'2xl'}
                     boxShadow={'2xl'}
                     width={'full'}
-                    h={'full'}
                     overflow={'hidden'}>
                     <Image
                         alt={'Hero Image'}
@@ -110,8 +107,10 @@ function AboutLayout() {
                         align={'center'}
                         w={'100%'}
                         h={'100%'}
-                        src={image}
-                    ></Image>
+                        src={
+                            'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+                        }
+                    />
                 </Box>
             </Flex>
         </Stack>
