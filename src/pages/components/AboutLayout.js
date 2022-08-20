@@ -23,14 +23,14 @@ function AboutLayout() {
             pb='50px'
             direction={{ base: 'column', md: 'row' }}>
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-                <Heading
+                {/* <Heading
                     lineHeight={1.1}
                     fontWeight={600}
                     fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                     <Text as={'span'}>
                         About
                     </Text>
-                </Heading>
+                </Heading> */}
 
                 <Text>
                     <Text
@@ -94,9 +94,10 @@ function AboutLayout() {
                 flex={1}
                 justify={'center'}
                 align={'center'}
-                w={'full'}>
+                w={'full'}
+                h={'full'}>
                 <Box
-                    height={'300px'}
+                    height={'full'}
                     rounded={'2xl'}
                     boxShadow={'2xl'}
                     width={'full'}
@@ -107,7 +108,7 @@ function AboutLayout() {
                         align={'center'}
                         w={'100%'}
                         h={'100%'}
-                        src={'/remote_team.svg'}
+                        src={'/Picsart_22-08-20_11-51-58-396.png'}
                     />
                 </Box>
             </Flex>
