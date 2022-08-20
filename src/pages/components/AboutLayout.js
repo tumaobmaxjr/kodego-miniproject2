@@ -6,7 +6,11 @@ import {
     Heading,
     Text,
     Image,
+    List,
+    ListItem,
+    ListIcon
 } from '@chakra-ui/react';
+import { MdCheckCircle } from "react-icons/md";
 
 function AboutLayout() {
     return (
@@ -24,38 +28,68 @@ function AboutLayout() {
                     fontWeight={600}
                     fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                     <Text as={'span'}>
-                        About Name
+                        About
                     </Text>
-                    {/* <br /> */}
-                    {/* <Text as={'span'} color={'red.400'}>
-                        About Periodic Table of Elements
-                    </Text> */}
                 </Heading>
-                <Text color={'gray.500'}>
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
-                    Snippy is a rich coding snippets app that lets you create your own
-                    code snippets, categorize them, and even sync them in the cloud so
-                    you can use them anywhere. All that is free!
+
+                <Text>
+                    <Text
+                        my={'10px'}
+                        fontSize={{ base: 'xl', sm: '2xl', lg: '3xl' }}>
+                        What is PTable?
+                    </Text>
+                    <Text color={'gray.500'}>
+                        The PTable consolidates and useful information about the chemical elements into a single location. 
+                        Click on an element to learn more about its properties, history, name origin, images, and electron shell diagram.
+                    </Text>
                 </Text>
+
+                <List spacing={3} pl={6}>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Color-coded table that is visually appealing.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            The design is simple and fluid, with many details.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Each element has a detailed description.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            View the list of all elements in atomic number order.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Bhor model diagram for each element.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Search for elements by name.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Links to informative websites for further study.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Added game feature.
+                    </ListItem>
+                    <ListItem>
+                        <ListIcon as={MdCheckCircle} color='teal' />
+                            Added daily science articles for you.
+                    </ListItem>
+
+                </List>
+
                 <Stack
                     spacing={{ base: 4, sm: 6 }}
                     direction={{ base: 'column', sm: 'row' }}>
                 </Stack>
             </Stack>
+            
             <Flex
                 flex={1}
                 justify={'center'}

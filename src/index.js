@@ -20,7 +20,6 @@ export default function App() {
         <NavbarLayout />
         <Routes>
           <Route path="/" element={<Home />} >
-          {/* <Route index element={<Home />} > */}
             <Route path="/" element={<PeriodicTable />} />
             <Route path="periodic-table" element={<PeriodicTable />} />
             <Route path="element-info" element={<ElementInfo />} />

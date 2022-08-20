@@ -127,7 +127,7 @@ const Games = () => {
     return (
         <>
             <Helmet>
-                <title>Games - PTable</title>
+                <title>Game - PTable</title>
             </Helmet>
             {loading &&
                 <Stack mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }} my={{ base: '0.4rem', md: '0.6rem', lg: '0.8rem', xl: '1rem' }}>

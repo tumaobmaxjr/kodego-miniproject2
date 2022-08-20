@@ -10,6 +10,7 @@ import {
   useColorMode,
   Stack,
   Container,
+  Text
 } from '@chakra-ui/react';
 import { HamburgerIcon, SmallCloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { LinkContainer } from "react-router-bootstrap";
@@ -36,7 +37,12 @@ export default function NavbarLayout() {
             {/* <Box> Logo</Box> */}
             <LinkContainer to="/">
               <Nav.Link>
-                <img src="/logo.png" alt="logo" width="50px"/>
+                <HStack>
+                  <img src="/logo.png" alt="logo" width="50px"/>
+                  <Text fontSize='2xl' fontWeight='bold'>
+                    PTable
+                  </Text>
+                </HStack>    
               </Nav.Link>
             </LinkContainer>
             {/* <link rel="icon" href="./public/logo.png" /> */}
