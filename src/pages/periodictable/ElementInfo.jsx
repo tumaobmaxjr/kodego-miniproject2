@@ -29,14 +29,10 @@ import {
     TableCaption,
     TableContainer,
 } from "@chakra-ui/react";
-<<<<<<< HEAD
-
 // import ScrollToTop from "react-scroll-to-top";
 
-import { ArrowUpIcon } from '@chakra-ui/icons';
-=======
+// import { ArrowUpIcon } from '@chakra-ui/icons';
 import { ArrowUpIcon, ExternalLinkIcon } from '@chakra-ui/icons';
->>>>>>> 9d4f49f69ce85e876ff0daab1e370f8150122b7b
 import ScrollToTop from "react-scroll-to-top";
 
 const tabledataWidth = "3.5rem";
