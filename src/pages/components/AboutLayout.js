@@ -11,7 +11,7 @@ import {
     ListIcon
 } from '@chakra-ui/react';
 import { MdCheckCircle } from "react-icons/md";
-import image from '../image/Picsart_22-08-20_11-51-58-396.png';
+// import image from 'Picsart_22-08-20_11-51-58-396.png';
 
 function AboutLayout() {
     return (
@@ -109,7 +109,7 @@ function AboutLayout() {
                         align={'center'}
                         w={'100%'}
                         h={'100%'}
-                        src={image}
+                        src={'/Picsart_22-08-20_11-51-58-396.png'}
                     />
                 </Box>
             </Flex>
