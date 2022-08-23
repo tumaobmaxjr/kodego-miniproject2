@@ -96,7 +96,7 @@ const Games = () => {
     const handleScore = () => {
         setTimeout(() => {
             setScore((currentNumber) => currentNumber - 1);
-        }, 1000);
+        }, 2000);
     }
 
     // minus the score continously
