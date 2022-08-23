@@ -11,10 +11,8 @@ import {
     ListIcon
 } from '@chakra-ui/react';
 import { MdCheckCircle } from "react-icons/md";
-<<<<<<< HEAD
 import AboutPic from './img.png';
-=======
->>>>>>> 404b2e0ea729acc94b967467f7aa2ea67e892a62
+
 
 function AboutLayout() {
     return (
