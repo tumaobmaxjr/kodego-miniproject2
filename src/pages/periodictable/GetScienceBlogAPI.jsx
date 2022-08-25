@@ -15,17 +15,36 @@ const GetScienceBlogAPI = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // useEffect(() => {
+    //     fetch('https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=fca0df5545064e5f8fe42a84aea93e6d')
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(result => {
+    //             console.log(result)
+    //             setData(result);
+    //             setLoading(false);
+    //         })
+    //         .catch(error => console.log('error', error));
+    // }, []);
+
     useEffect(() => {
-        fetch('https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=fca0df5545064e5f8fe42a84aea93e6d')
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f774088c21mshc0ca572c42f93a5p1cd783jsn9fc33d0b8fd3',
+                'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com'
+            }
+        };
+        
+        fetch('https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planet/list', options)
+            .then(response => response.json())
             .then(response => {
-                return response.json()
+                console.log(response)
+                setData(response);
             })
-            .then(result => {
-                console.log(result)
-                setData(result);
-                setLoading(false);
-            })
-            .catch(error => console.log('error', error));
+            
+            .catch(err => console.error(err));
     }, []);
 
 

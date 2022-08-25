@@ -69,7 +69,7 @@ const ScienceBlog = ({ data, header }) => {
                     fontWeight={'bold'}>
                     {header}
                 </Center>
-                {data.articles?.map((datas) => {
+                {/* {data.articles?.map((datas) => {
                     // handleImage(datas.urlToImage);
                     return (
                         <Box key={datas.url}
@@ -108,6 +108,49 @@ const ScienceBlog = ({ data, header }) => {
                                 }}
                             />
                             <Text my={'2'}>Source: {datas.source.name}</Text>
+                        </Box>
+                        
+                    )
+                })} */}
+                {data.map((datas) => {
+                    // handleImage(datas.urlToImage);
+                    return (
+                        <Box key={datas.wikiLink}
+                            mx={{ base: '5%', md: '10%', lg: '15%', xl: '20%' }}
+                            mb={'1rem'}
+                            boxShadow='lg'
+                            p={'1rem'}>
+                            <Text id="BlogTitle" fontSize={{ base: '1rem', xl: '1.2rem' }}>
+                                {datas.name}
+                            </Text>
+                            <br />
+                            <Text>
+                                {datas.description}
+                            </Text>
+                            <br />
+                            <Text>
+                                {datas.imgSrc[0].imgDescription}
+                            </Text>
+
+                            <Box my={'1rem'}>
+                                <Link color='teal.500' href={datas.wikiLink} isExternal>
+                                    Read more... <ExternalLinkIcon mx='2px' />
+                                </Link>
+                            </Box>
+
+                            <Image
+                                mx={'auto'}
+                                w={'auto'}
+                                h={'auto'}
+                                objectFit='contain'
+                                src={datas.imgSrc[0].img}
+                                alt='Sorry, no image available'
+                                onClick={() => {
+                                    handleImage(datas.imgSrc[0].img);
+                                    setShowImage(true);
+                                }}
+                            />
+                            <Text my={'2'}>Source: {datas.source}</Text>
                         </Box>
                         
                     )
