@@ -69,6 +69,8 @@ const ScienceBlog = ({ data, header }) => {
                     fontWeight={'bold'}>
                     {header}
                 </Center>
+
+                {/* this codeblock article can only be accessed in localhost, because we need to pay if we deploy it */}
                 {/* {data.articles?.map((datas) => {
                     // handleImage(datas.urlToImage);
                     return (
@@ -112,6 +114,8 @@ const ScienceBlog = ({ data, header }) => {
                         
                     )
                 })} */}
+
+                {/* For hosting */}
                 {data.map((datas) => {
                     // handleImage(datas.urlToImage);
                     return (
