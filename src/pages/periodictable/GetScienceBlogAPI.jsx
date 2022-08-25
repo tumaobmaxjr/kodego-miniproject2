@@ -42,6 +42,7 @@ const GetScienceBlogAPI = () => {
             .then(response => {
                 console.log(response)
                 setData(response);
+                setLoading(false);
             })
             
             .catch(err => console.error(err));
